@@ -1,2 +1,1 @@
-# potential-disco
-IDE for a rubik cube
+# Cube Codes IDE
