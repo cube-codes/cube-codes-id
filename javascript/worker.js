@@ -60,9 +60,9 @@ const cubeStateChangedHandler = e => {
 const onHostStarted = e => {
 	
 	const initialState = e.cubeState;
-	initialState.move = function(move) { return new CC.CubeState(this.spec, this.value + move.angle); }; //TODO: Proper Deserialize
+	initialState.move = function(move) { return new CCM.CubeState(this.spec, this.value + move.angle); }; //TODO: Proper Deserialize
 	
-	cube = new CC.Cube(initialState);
+	cube = new CCM.Cube(initialState);
 	cube.stateChanged.on(cubeStateChangedHandler);
 	
 	let event = {
