@@ -46,7 +46,7 @@ class ProgramRunner {
 		this.setState(1);
 		
 		// Setup worker
-		this.worker = new Worker('worker.js');
+		this.worker = new Worker('javascript/worker.js');
 		this.worker.onmessage = message => {
 			console.debug('ProgramRunner: onmessage: ', message);
 			if (typeof message.data.CubeStateChanged === 'object') {
