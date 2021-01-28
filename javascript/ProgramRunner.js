@@ -100,6 +100,7 @@ class ProgramRunner {
 		addToast('Program aborted', '', 'danger', 8000);
 		
 		this.worker.terminate();
+		// Cleanup worker state like deleteing the worker object...
 	
 	}
 
@@ -109,6 +110,7 @@ class ProgramRunner {
 		addLog('Program finished', 'success', true);
 		addLogSeperator();
 		addToast('Program finished', '', 'success', 5000);
+		// Cleanup worker state like deleteing the worker object...
 
 	}
 
@@ -118,12 +120,14 @@ class ProgramRunner {
 		addLog(`Program crashed with an error: ${e.error.stack}`, 'danger', true);
 		addLogSeperator();
 		addToast('Program crashed with an error', e.error.message, 'danger', 8000);
+		// Cleanup worker state like deleteing the worker object...
 
 	}
 
 	onWorkerCrashed(e) {
 		
 		this.setState(5);
+		// Cleanup worker state like deleteing the worker object...
 
 	}
 
@@ -163,7 +167,6 @@ class ProgramRunner {
 
 		const spec = this.cube.getState().spec; //TODO: Proper deserizaling
 		
-		e.oldState.spec = spec; //TODO: Remove
 		e.newState.spec = spec; //TODO: Remove
 		if(e.move) {
 			e.move.spec = spec; //TODO: Remove

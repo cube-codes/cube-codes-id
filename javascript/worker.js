@@ -39,9 +39,6 @@ const cubeStateChangedHandler = e => {
 	
 	const event = {
 		CubeStateChanged: {//TODO: Proper Serialization
-			oldState: {
-				value: e.oldState.value
-			},
 			newState: {
 				value: e.newState.value
 			},
@@ -92,7 +89,7 @@ const sendEventAsMessage = e => {
 	if(typeof e.WorkerDone === 'object') {
 		workerDone = true;
 	}
-	postMessage(e);
+	postMessage(e); // Messages should fulfill a special interface and have a "channel" at their side (transmitted also) so that the receiver can execute listeners to that channel
 	if(typeof e.WorkerDone === 'object') {
 		close();
 	}
