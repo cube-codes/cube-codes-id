@@ -1,34 +1,6 @@
 'use strict';
 
-const addLog = (text, color, withDate) => {
-	let date = '';
-	if(withDate) {
-		date = '[' + new Date().toLocaleTimeString('en-US', { hourCycle: 'h23' }) + '] ';
-	}
-	$(`<div class="log text-${color}">${date}${text}</div>`).appendTo('#logger');
-	if($('#button-editor-lock-scroll').hasClass('active')) {
-		$('#logger').scrollTop($('#logger').prop("scrollHeight"));
-	}
-};
-const addLogSeperator = () => addLog("&nbsp;\n" + '-'.repeat(80) + "\n&nbsp;", 'info', false);
-
-const addToast = (title, text, color, delay) => {
-	const icons = new Map([
-		['info'   , 'info-circle-fill.svg'],
-		['success', 'check-circle-fill.svg'],
-		['warning', 'exclamation-circle-fill.svg'],
-		['danger' , 'x-circle-fill.svg']
-	]);
-	const toast = $(`<div class="toast bg-${color} text-light" data-delay="${delay}"><div class="toast-header"><img src="images/bootstrap-icons/${icons.get(color)}" /><strong>${title}</strong><button type="button" class="ml-auto close" data-dismiss="toast">×</button></div><div class="toast-body">${text}</div></div>`).appendTo('#toast-zone');
-	toast.on('hidden.bs.toast', () => {
-		toast.remove();
-	});
-	toast.toast('show');
-};
-
 window.addEventListener('beforeunload', e => event.returnValue = 'Are you sure you want to leave?');
-
-
 
 $(function() {
 
@@ -47,8 +19,8 @@ const startApplication = () => {
 
 	// Cube
 
-	const cubeSpec = new CCM.CubeSpecification(3);
-	const cube = new CCM.Cube(new CCM.CubeState(cubeSpec, 0));
+	const cubeSpec = new CCI.CubeSpecification(3);
+	const cube = new CCI.Cube(new CCI.CubeState(cubeSpec, 0));
 	cube.stateChanged.on(e => console.log('Event: cube.change', e));
 
 	// Editor
@@ -70,17 +42,18 @@ const startApplication = () => {
 		$('#button-editor-redo').prop('disabled', !editor.session.getUndoManager().hasRedo());
 	});
 
-	const programRunner = new ProgramRunner(cube);
-	programRunner.on('stateChanged', e => {
-		const running = e.detail.newState === 1 || e.detail.newState === 2;
+	const ui = new CCI.Ui(cube);
+	const programManager = new CCI.ProgramManager(ui);
+	programManager.stateChanged.on(e => {
+		const running = e.newState !== CCI.ProgramManagerState.IDLE;
 		$('#button-editor-abort'   ).prop('disabled', !running);
 		$('#button-editor-run'     ).prop('disabled', running);
 		$('#button-editor-run-fast').prop('disabled', running);
 	})
 	
-	$('#button-editor-abort'          ).on('click', e => programRunner.abort());
-	$('#button-editor-run'            ).on('click', e => programRunner.start(editor.getValue(), 300));
-	$('#button-editor-run-fast'       ).on('click', e => programRunner.start(editor.getValue(), 0));
+	$('#button-editor-abort'          ).on('click', e => programManager.abort());
+	$('#button-editor-run'            ).on('click', e => programManager.start(editor.getValue(), 300));
+	$('#button-editor-run-fast'       ).on('click', e => programManager.start(editor.getValue(), 0));
 	$('#button-editor-undo'           ).on('click', e => editor.undo());
 	$('#button-editor-redo'           ).on('click', e => editor.redo());
 	$('#button-editor-search'         ).on('click', e => editor.execCommand('find'));
@@ -96,7 +69,7 @@ const startApplication = () => {
 	
 	// Cube History
 
-	const cubeHistory = new CCM.CubeHistory(cube);
+	const cubeHistory = new CCI.CubeHistory(cube);
 	cubeHistory.moved.on(e => console.log('Event: cubeHistory.moved', e));
 	cubeHistory.recorded.on(e => console.log('Event: cubeHistory.recorded', e));
 	cubeHistory.pastCleaned.on(e => console.log('Event: cubeHistory.pastCleaned', e));

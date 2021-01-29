@@ -1,0 +1,8 @@
+{
+	"out": "dist/docs",
+	"mode": "modules",
+	"listInvalidSymbolLinks": true,
+	"name": "Cube Codes IDE",
+	"exclude": "src/index.ts",
+	"inputFiles": "src"
+}
