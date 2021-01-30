@@ -14,21 +14,18 @@ export class ProgramWorkerMessageBus {
 
 	readonly workerContinueSync: MessageInbox<WorkerContinueSync>
 
-	private readonly global: ProgramWorkerGlobal
-
 	private readonly messageQueue: Array<ProgramWorkerOutboundMessage>
 
 	private messageQueueChangeDetector?: MessageQueueChangeDetector
 
 	private messageQueueClosed: boolean
 
-	constructor(global: ProgramWorkerGlobal) {
+	constructor() {
 
 		this.workerStartSync = new MessageInbox<WorkerStartSync>(WorkerStartSyncType);
 		this.workerContinueSync = new MessageInbox<WorkerContinueSync>(WorkerContinueSyncType);
 
-		this.global = global;
-		this.global.onmessage = m => {
+		(globalThis as unknown as ProgramWorkerGlobal).onmessage = m => {
 			for (const propertyName in this) {
 				const inbox: any = this[propertyName];
 				(inbox as MessageInbox<any>)?.tryRelay?.call(inbox, m.data);
@@ -86,9 +83,9 @@ export class ProgramWorkerMessageBus {
 		if (messageData.type === 'WorkerFinishedSync') {
 			this.messageQueueClosed = true;
 		}
-		this.global.postMessage(messageData);
+		(globalThis as unknown as ProgramWorkerGlobal).postMessage(messageData);
 		if (messageData.type === 'WorkerFinishedSync') {
-			this.global.close();
+			(globalThis as unknown as ProgramWorkerGlobal).close();
 		}
 	};
 

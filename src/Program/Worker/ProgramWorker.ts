@@ -1,13 +1,12 @@
 import { ExecutionContext } from "./ExecutionContext";
-import { ProgramWorkerGlobal } from "./ProgramWorkerGlobal";
 import { ProgramWorkerMessageBus } from "./ProgramWorkerMessageBus";
 
 export class ProgramWorker {
 
 	public readonly messageBus: ProgramWorkerMessageBus
 
-	constructor(global: ProgramWorkerGlobal) {
-		this.messageBus = new ProgramWorkerMessageBus(global);
+	constructor() {
+		this.messageBus = new ProgramWorkerMessageBus();
 		this.messageBus.workerStartSync.on(m => {
 			new ExecutionContext(this.messageBus, m.cubeState).run(m.programCode);
 		});

@@ -1,7 +1,9 @@
 import { Cube, CubeState } from "@cube-codes/cube-codes-model";
 import { WorkerFinishedSync } from "../Message Bus/WorkerFinishedSync";
+import { ExecutionApi } from "./ExecutionApi";
 import { ProgramWorkerMessageBus } from "./ProgramWorkerMessageBus";
 
+export var API: ExecutionApi
 export class ExecutionContext {
 
 	private readonly messageBus: ProgramWorkerMessageBus
@@ -21,7 +23,9 @@ export class ExecutionContext {
 	}
 
 	run(programCode: string): void {
-	
+
+		API = new ExecutionApi(this.messageBus);
+
 		let workerFinishedSync: WorkerFinishedSync = {
 			type: 'WorkerFinishedSync',
 		}

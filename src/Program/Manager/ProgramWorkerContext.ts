@@ -8,7 +8,7 @@ export class ProgramWorkerContext {
 
 	constructor() {
 		if (!Worker) throw new Error('Worker not available');
-		this.worker = new Worker("javascript/worker2.js");
+		this.worker = new Worker("javascript/programWorker.js");
 		this.messageBus = new ProgramWorkerContextMessageBus(this.worker);
 	}
 

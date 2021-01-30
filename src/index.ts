@@ -23,5 +23,3 @@ export * from './Program/Worker/ProgramWorkerMessageBus';
 
 export * from './Ui/Level';
 export * from './Ui/Ui';
-
-export * from '@cube-codes/cube-codes-model'
