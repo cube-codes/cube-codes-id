@@ -34,7 +34,7 @@
 	"bugs": {
 		"url": "https://github.com/cube-codes/cube-codes-ide/issues"
 	},
-	"homepage": "https://ide.cube.codes",
+	"homepage": "http://ide.cube.codes",
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^15.0.0",
 		"@rollup/plugin-node-resolve": "^9.0.0",
