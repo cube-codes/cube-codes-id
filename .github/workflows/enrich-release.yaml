@@ -16,8 +16,12 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
     - run: |
-        npm run ci-release --prefix app
-        npm run ci-release --prefix worker
+        cd app
+        npm run ci-release
+        cd ..
+        cd worker
+        npm run ci-release
+        cd ..
         mkdir -p dist/web
         cp --recursive --parents app/dist/browser/cube-codes-ide-app.js app/index.html app/favicon.ico app/images app/styles worker/dist/browser/cube-codes-ide-worker.js worker/worker.js dist/web
         zip -r dist/web.zip dist/web
