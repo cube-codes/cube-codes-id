@@ -1,4 +1,5 @@
-import { CubeVisualizer, Cube, CubeHistory, CubeMoveAngle, CubeSpecification, EventSource } from "@cube-codes/cube-codes-visualizer";
+import { Cube, CubeHistory, CubeMoveAngle, CubeSolutionCondition, CubeSolutionConditionType, CubeSpecification, EventSource } from "@cube-codes/cube-codes-model";
+import { CubeVisualizer } from "@cube-codes/cube-codes-visualizer";
 import { Level } from "../../common/src/Level";
 import { Toast } from "bootstrap"
 import { ProgramManager } from ".//Manager/ProgramManager";
@@ -29,8 +30,9 @@ export class Ui {
 
 	constructor() {
 
-		const cubeSpec = new CubeSpecification(3);
-		this.cube = new Cube(cubeSpec);
+		const spec = new CubeSpecification(3);
+		const solutionCondition = new CubeSolutionCondition(CubeSolutionConditionType.COLOR);
+		this.cube = new Cube(spec, solutionCondition);
 		this.cubeHistory = new CubeHistory(this.cube);
 		this.programManager = new ProgramManager(this);
 		this.visualizer = new CubeVisualizer(this.cube, document.getElementById('cube-display') as HTMLCanvasElement, 500);
