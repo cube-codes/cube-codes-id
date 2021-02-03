@@ -6,7 +6,8 @@ import { ProgramManager } from ".//Manager/ProgramManager";
 import { ProgramManagerState } from "./Manager/ProgramManagerState";
 import $ from "jquery";
 import * as A from 'ace-builds';
-import { Mode as JSMode } from "ace-builds/src-noconflict/mode-javascript"
+import { Mode as JavascriptMode } from "ace-builds/src-noconflict/mode-javascript"
+import { Search } from "ace-builds/src-noconflict/ext-searchbox"
 
 export class Ui {
 
@@ -53,7 +54,7 @@ export class Ui {
 	private initEditor(): void {
 		this.editor = A.edit('editor');
 		this.editor.setOptions({
-			mode: new JSMode(),
+			mode: new JavascriptMode(),
 			newLineMode: 'unix',
 			useSoftTabs: false,
 			tabSize: 4,
@@ -83,7 +84,7 @@ export class Ui {
 		$('#button-editor-run-fast'       ).on('click', e => this.programManager.start(this.editor?.getValue() as string, false));
 		$('#button-editor-undo'           ).on('click', e => this.editor?.undo());
 		$('#button-editor-redo'           ).on('click', e => this.editor?.redo());
-		$('#button-editor-search'         ).on('click', e => this.editor?.execCommand('find'));
+		$('#button-editor-search'         ).on('click', e => new Search(this.editor, false));
 		$('#button-editor-show-invisibles').on('click', e => this.editor?.setOption('showInvisibles', !this.editor.getOption('showInvisibles')));
 		$('#button-editor-font-increase'  ).on('click', e => { fontSize = Math.floor(fontSize * 1.2); this.editor?.setFontSize(`${fontSize}px`); $('#editor, #logger').attr('style', `font-size: ${fontSize}px !important`); });
 		$('#button-editor-font-decrease'  ).on('click', e => { fontSize = Math.floor(fontSize / 1.2); this.editor?.setFontSize(`${fontSize}px`); $('#editor, #logger').attr('style', `font-size: ${fontSize}px !important`); });
