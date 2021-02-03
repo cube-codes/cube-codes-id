@@ -1,0 +1,29 @@
+name: Enrich Release
+on:
+  release:
+    types: [created]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: bruceadams/get-release@v1.2.1
+      id: get_release
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: |
+        npm ci-release --prefix app
+        npm ci-release --prefix worker
+        mkdir -p dist/web
+        cp --recursive --parents app/dist/browser/cube-codes-ide-app.js app/index.html app/favicon.ico app/images app/styles worker/dist/browser/cube-codes-ide-worker.js worker/worker.js dist/web
+        zip -r dist/web.zip dist/web
+    - uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: ./dist/web.zip
+        asset_name: cube-codes-ide-${{ steps.get_release.outputs.tag_name }}-web.zip
+        asset_content_type: application/zip

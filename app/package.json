@@ -1,0 +1,30 @@
+{
+	"type": "commonjs",
+	"scripts": {
+		"build": "tsc",
+		"test": "jest",
+		"build-browser": "rollup -c",
+		"ci-build": "npm ci && npm run build && npm run test && npm run build-browser",
+		"ci-release": "npm run ci-build"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^15.0.0",
+		"@rollup/plugin-node-resolve": "^9.0.0",
+		"@types/ace": "0.0.44",
+		"@types/bootstrap": "^5.0.5",
+		"@types/jest": "^26.0.13",
+		"@types/jquery": "^3.5.5",
+		"jest": "^26.4.2",
+		"rollup": "^2.26.11",
+		"ts-jest": "^26.3.0",
+		"typescript": "^4.0.2"
+	},
+	"dependencies": {
+		"@cube-codes/cube-codes-model": "^0.0.24",
+		"@cube-codes/cube-codes-visualizer": "^0.0.2",
+		"ace-builds": "^1.4.12",
+		"bootstrap": "^4.6.0",
+		"jquery": "^3.5.1",
+		"popper.js": "^1.16.1"
+	}
+}
