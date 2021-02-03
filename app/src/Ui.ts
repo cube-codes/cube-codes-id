@@ -225,7 +225,7 @@ export class Ui {
 		const color = Ui.BOOTSTRAP_COLOR_CLASSES_BY_LEVEL.get(level);
 		let date = '';
 		if (withDate) {
-			date = '[' + new Date().toLocaleTimeString('en-US') + '] ';
+			date = '[' + new Date().toLocaleTimeString('en-GB') + '] ';
 		}
 		$(`<div class="log text-${color}">${date}${message}</div>`).appendTo('#logger');
 		if ($('#button-editor-lock-scroll').hasClass('active')) {
