@@ -11,7 +11,7 @@ export class ExecutionContext {
 
 	constructor(messageBus: ProgramWorkerMessageBus, cubeState: CubeState) {
 		this.messageBus = messageBus;
-		this.cube = new Cube(cubeState.spec, cubeState);
+		this.cube = new Cube(cubeState.spec, cubeState.solutionCondition, cubeState);
 		this.cube.stateChanged.on(e => {
 			messageBus.queueMessage({
 				type: 'CubeStateSync',

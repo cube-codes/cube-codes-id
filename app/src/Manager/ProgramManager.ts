@@ -1,7 +1,7 @@
 import { ProgramManagerState } from "./ProgramManagerState";
 import { ProgramWorkerContext } from "./ProgramWorkerContext";
 import { ProgramManagerStateChanged } from "./ProgramManagerStateChanged";
-import { CubeMove, CubeState, Event } from "@cube-codes/cube-codes-visualizer";
+import { CubeMove, CubeState, Event } from "@cube-codes/cube-codes-model";
 import { Level } from "../../../common/src/Level";
 import { Ui } from "../Ui";
 

@@ -1,4 +1,4 @@
-import { EventData } from "@cube-codes/cube-codes-visualizer";
+import { EventData } from "@cube-codes/cube-codes-model";
 import { ProgramManagerState } from "./ProgramManagerState";
 
 export interface ProgramManagerStateChanged extends EventData {
