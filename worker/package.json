@@ -1,4 +1,6 @@
 {
+	"name": "@cube-codes/cube-codes-ide-worker",
+	"version": "1.0.0",
 	"type": "commonjs",
 	"scripts": {
 		"build": "tsc",
