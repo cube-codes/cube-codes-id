@@ -40,6 +40,7 @@ jobs:
         rm --recursive *
         cp --recursive ../dist/web/* .
         echo '<!DOCTYPE html><meta charset="utf-8"><meta http-equiv="refresh" content="0; URL=./app/"><link rel="canonical" href="./app/">' > index.html
+        echo 'ide.cube.codes' > CNAME
         git config --global user.name 'CI'
         git config --global user.email 'info@cube.codes'
         git add .
