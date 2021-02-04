@@ -209,7 +209,7 @@ export class Ui {
 		$('#dropdown-item-cube-z-two').on('click', e => this.cube.mZ(CubeMoveAngle.C180));
 		$('#dropdown-item-cube-z-invert').on('click', e => this.cube.mZ(CubeMoveAngle.CC90));
 	
-		$('#dropdown-cube-shuffle-move-set').on('click', async e => { const cubeClone = new Cube(this.cube.spec, this.cube.solutionCondition, this.cube.getState()); await cubeClone.shuffleByMove(50); this.cube.setState(cubeClone.getState()); });
+		$('#dropdown-cube-shuffle-move-set').on('click', async e => { const cubeClone = this.cube.clone(); await cubeClone.shuffleByMove(50); this.cube.setState(cubeClone.getState()); });
 		$('#dropdown-cube-shuffle-move-play').on('click', e => this.cube.shuffleByMove(50));
 		$('#button-cube-reset').on('click', e => this.cube.setState(CubeState.fromSolved(this.cube.spec, this.cube.solutionCondition)));
 
@@ -218,6 +218,8 @@ export class Ui {
 		$('#dropdown-cube-speed-quick').on('click', updateAnimationDuration(200));
 		$('#dropdown-cube-speed-normal').on('click', updateAnimationDuration(500));
 		$('#dropdown-cube-speed-slow').on('click', updateAnimationDuration(1000));
+
+		$('#button-view-reset').on('click', e => this.visualizer.resetCamera());
 
 	}
 
