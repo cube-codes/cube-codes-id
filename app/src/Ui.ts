@@ -1,4 +1,4 @@
-import { Cube, CubeHistory, CubeMoveAngle, CubeSolutionCondition, CubeSolutionConditionType, CubeSpecification, EventSource } from "@cube-codes/cube-codes-model";
+import { Cube, CubeMoveAngle, CubeSolutionCondition, CubeSolutionConditionType, CubeSpecification, CubeState } from "@cube-codes/cube-codes-model";
 import { CubeVisualizer } from "@cube-codes/cube-codes-visualizer";
 import { Level } from "../../common/src/Level";
 import { Toast } from "bootstrap"
@@ -8,6 +8,7 @@ import $ from "jquery";
 import * as A from 'ace-builds';
 import { Mode as JavascriptMode } from "ace-builds/src-noconflict/mode-javascript"
 import { Search } from "ace-builds/src-noconflict/ext-searchbox"
+import { CubeHistory } from "./Cube History/CubeHistory";
 
 export class Ui {
 
@@ -97,7 +98,7 @@ export class Ui {
 		// Display Cube History Moves
 	
 		this.cubeHistory.moved.on(e => { $('#section-history-changes > span.current').removeClass('current'); $('#section-history-changes > span:nth-child(' + (this.cubeHistory.getCurrentPosition() + 2) + ')').addClass('current'); });
-		this.cubeHistory.recorded.on(e => { $('#section-history-changes').append('<span class="badge badge-light">' + (e.change.move ? this.cube.getCubeMoveExporter().stringify([e.change.move]) : 'Manual') + '</span>'); if($('#button-history-lock-scroll').hasClass('active')) { $('#section-history-changes').scrollTop($('#section-history-changes').prop("scrollHeight")); } });
+		this.cubeHistory.recorded.on(e => { $('#section-history-changes').append('<span class="badge badge-light">' + (e.change.move ? this.cube.getCubeMoveExporter().stringify([e.change.move]) : 'New State') + '</span>'); if($('#button-history-lock-scroll').hasClass('active')) { $('#section-history-changes').scrollTop($('#section-history-changes').prop("scrollHeight")); } });
 		this.cubeHistory.pastCleaned.on(e => { $('#section-history-changes').children().slice(0, e.before + 1).remove(); $('#section-history-changes > span.current').removeClass('current'); $('#section-history-changes > span:nth-child(' + (this.cubeHistory.getCurrentPosition() + 2) + ')').addClass('current'); $('#section-history-changes > span:first-child').html('Initial'); });
 		this.cubeHistory.futureCleaned.on(e => { $('#section-history-changes').children().slice(e.after + 2).remove(); $('#section-history-changes > span.current').removeClass('current'); $('#section-history-changes > span:nth-child(' + (this.cubeHistory.getCurrentPosition() + 2) + ')').addClass('current'); });
 		$('#section-history-changes').append('<span class="badge badge-light current">Initial</span>');
@@ -127,90 +128,97 @@ export class Ui {
 		$('#button-history-jump-end'    ).on('click', e => this.cubeHistory.jumpToEnd());
 		$('#button-history-step-back'   ).on('click', e => this.cubeHistory.stepBack());
 		$('#button-history-step-ahead'  ).on('click', e => this.cubeHistory.stepAhead());
+		$('#button-history-play-back'   ).on('click', e => this.cubeHistory.playBack());
+		$('#button-history-play-ahead'  ).on('click', e => this.cubeHistory.playAhead());
 		$('#button-history-clean-past'  ).on('click', e => this.cubeHistory.cleanPastBefore(this.cubeHistory.getCurrentPosition()));
 		$('#button-history-clean-future').on('click', e => this.cubeHistory.cleanFutureAfter(this.cubeHistory.getCurrentPosition()));
 	
 	}
 
 	initControls(): void {
+		
+		$('#button-cube-left').on('click', e => this.cube.mLeft());
+		$('#dropdown-item-cube-left-two').on('click', e => this.cube.mLeft(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-left-invert').on('click', e => this.cube.mLeft(CubeMoveAngle.CC90));
+		
+		$('#button-cube-left-middle').on('click', e => this.cube.mLeftBlock());
+		$('#dropdown-item-cube-left-middle-two').on('click', e => this.cube.mLeftBlock(2, CubeMoveAngle.C180));
+		$('#dropdown-item-cube-left-middle-invert').on('click', e => this.cube.mLeftBlock(2, CubeMoveAngle.CC90));
+		
+		$('#button-cube-middle').on('click', e => this.cube.mMiddle());
+		$('#dropdown-item-cube-middle-two').on('click', e => this.cube.mMiddle(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-middle-invert').on('click', e => this.cube.mMiddle(CubeMoveAngle.CC90));
+		
+		$('#button-cube-right-middle').on('click', e => this.cube.mRightBlock());
+		$('#dropdown-item-cube-right-middle-two').on('click', e => this.cube.mRightBlock(2, CubeMoveAngle.C180));
+		$('#dropdown-item-cube-right-middle-invert').on('click', e => this.cube.mRightBlock(2, CubeMoveAngle.CC90));
+		
+		$('#button-cube-right').on('click', e => this.cube.mRight());
+		$('#dropdown-item-cube-right-two').on('click', e => this.cube.mRight(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-right-invert').on('click', e => this.cube.mRight(CubeMoveAngle.CC90));
+		
+		$('#button-cube-x').on('click', e => this.cube.mX());
+		$('#dropdown-item-cube-x-two').on('click', e => this.cube.mX(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-x-invert').on('click', e => this.cube.mX(CubeMoveAngle.CC90));
+		
+		$('#button-cube-up').on('click', e => this.cube.mUp());
+		$('#dropdown-item-cube-up-two').on('click', e => this.cube.mUp(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-up-invert').on('click', e => this.cube.mUp(CubeMoveAngle.CC90));
+		
+		$('#button-cube-up-equator').on('click', e => this.cube.mUpBlock());
+		$('#dropdown-item-cube-up-equator-two').on('click', e => this.cube.mUpBlock(2, CubeMoveAngle.C180));
+		$('#dropdown-item-cube-up-equator-invert').on('click', e => this.cube.mUpBlock(2, CubeMoveAngle.CC90));
+		
+		$('#button-cube-equator').on('click', e => this.cube.mEquator());
+		$('#dropdown-item-cube-equator-two').on('click', e => this.cube.mEquator(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-equator-invert').on('click', e => this.cube.mEquator(CubeMoveAngle.CC90));
+		
+		$('#button-cube-down-equator').on('click', e => this.cube.mDownBlock());
+		$('#dropdown-item-cube-down-equator-two').on('click', e => this.cube.mDownBlock(2, CubeMoveAngle.C180));
+		$('#dropdown-item-cube-down-equator-invert').on('click', e => this.cube.mDownBlock(2, CubeMoveAngle.CC90));
+		
+		$('#button-cube-down').on('click', e => this.cube.mDown());
+		$('#dropdown-item-cube-down-two').on('click', e => this.cube.mDown(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-down-invert').on('click', e => this.cube.mDown(CubeMoveAngle.CC90));
+		
+		$('#button-cube-y').on('click', e => this.cube.mY());
+		$('#dropdown-item-cube-y-two').on('click', e => this.cube.mY(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-y-invert').on('click', e => this.cube.mY(CubeMoveAngle.CC90));
 
-		const source: EventSource = {
-			animation: true
-		}
-
-		$('#button-cube-front').on('click', e => this.cube.mFront(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-front-two').on('click', e => this.cube.mFront(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-front-invert').on('click', e => this.cube.mFront(CubeMoveAngle.CC90, source));
+		$('#button-cube-front').on('click', e => this.cube.mFront());
+		$('#dropdown-item-cube-front-two').on('click', e => this.cube.mFront(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-front-invert').on('click', e => this.cube.mFront(CubeMoveAngle.CC90));
 		
-		$('#button-cube-front-stand').on('click', e => this.cube.mFrontBlock(2, CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-front-stand-two').on('click', e => this.cube.mFrontBlock(2, CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-front-stand-invert').on('click', e => this.cube.mFrontBlock(2, CubeMoveAngle.CC90, source));
+		$('#button-cube-front-stand').on('click', e => this.cube.mFrontBlock());
+		$('#dropdown-item-cube-front-stand-two').on('click', e => this.cube.mFrontBlock(2, CubeMoveAngle.C180));
+		$('#dropdown-item-cube-front-stand-invert').on('click', e => this.cube.mFrontBlock(2, CubeMoveAngle.CC90));
 		
-		$('#button-cube-stand').on('click', e => this.cube.mStand(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-stand-two').on('click', e => this.cube.mStand(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-stand-invert').on('click', e => this.cube.mStand(CubeMoveAngle.CC90, source));
+		$('#button-cube-stand').on('click', e => this.cube.mStand());
+		$('#dropdown-item-cube-stand-two').on('click', e => this.cube.mStand(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-stand-invert').on('click', e => this.cube.mStand(CubeMoveAngle.CC90));
 		
-		$('#button-cube-back-stand').on('click', e => this.cube.mBackBlock(2, CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-back-stand-two').on('click', e => this.cube.mBackBlock(2, CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-back-stand-invert').on('click', e => this.cube.mBackBlock(2, CubeMoveAngle.CC90, source));
+		$('#button-cube-back-stand').on('click', e => this.cube.mBackBlock());
+		$('#dropdown-item-cube-back-stand-two').on('click', e => this.cube.mBackBlock(2, CubeMoveAngle.C180));
+		$('#dropdown-item-cube-back-stand-invert').on('click', e => this.cube.mBackBlock(2, CubeMoveAngle.CC90));
 		
-		$('#button-cube-back').on('click', e => this.cube.mBack(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-back-two').on('click', e => this.cube.mBack(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-back-invert').on('click', e => this.cube.mBack(CubeMoveAngle.CC90, source));
+		$('#button-cube-back').on('click', e => this.cube.mBack());
+		$('#dropdown-item-cube-back-two').on('click', e => this.cube.mBack(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-back-invert').on('click', e => this.cube.mBack(CubeMoveAngle.CC90));
 		
-		$('#button-cube-z').on('click', e => this.cube.mZ(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-z-two').on('click', e => this.cube.mZ(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-z-invert').on('click', e => this.cube.mZ(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-left').on('click', e => this.cube.mLeft(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-left-two').on('click', e => this.cube.mLeft(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-left-invert').on('click', e => this.cube.mLeft(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-left-middle').on('click', e => this.cube.mLeftBlock(2, CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-left-middle-two').on('click', e => this.cube.mLeftBlock(2, CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-left-middle-invert').on('click', e => this.cube.mLeftBlock(2, CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-middle').on('click', e => this.cube.mMiddle(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-middle-two').on('click', e => this.cube.mMiddle(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-middle-invert').on('click', e => this.cube.mMiddle(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-right-middle').on('click', e => this.cube.mRightBlock(2, CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-right-middle-two').on('click', e => this.cube.mRightBlock(2, CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-right-middle-invert').on('click', e => this.cube.mRightBlock(2, CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-right').on('click', e => this.cube.mRight(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-right-two').on('click', e => this.cube.mRight(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-right-invert').on('click', e => this.cube.mRight(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-x').on('click', e => this.cube.mX(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-x-two').on('click', e => this.cube.mX(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-x-invert').on('click', e => this.cube.mX(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-up').on('click', e => this.cube.mUp(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-up-two').on('click', e => this.cube.mUp(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-up-invert').on('click', e => this.cube.mUp(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-up-equator').on('click', e => this.cube.mUpBlock(2, CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-up-equator-two').on('click', e => this.cube.mUpBlock(2, CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-up-equator-invert').on('click', e => this.cube.mUpBlock(2, CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-equator').on('click', e => this.cube.mEquator(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-equator-two').on('click', e => this.cube.mEquator(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-equator-invert').on('click', e => this.cube.mEquator(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-down-equator').on('click', e => this.cube.mDownBlock(2, CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-down-equator-two').on('click', e => this.cube.mDownBlock(2, CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-down-equator-invert').on('click', e => this.cube.mDownBlock(2, CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-down').on('click', e => this.cube.mDown(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-down-two').on('click', e => this.cube.mDown(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-down-invert').on('click', e => this.cube.mDown(CubeMoveAngle.CC90, source));
-		
-		$('#button-cube-y').on('click', e => this.cube.mY(CubeMoveAngle.C90, source));
-		$('#dropdown-item-cube-y-two').on('click', e => this.cube.mY(CubeMoveAngle.C180, source));
-		$('#dropdown-item-cube-y-invert').on('click', e => this.cube.mY(CubeMoveAngle.CC90, source));
+		$('#button-cube-z').on('click', e => this.cube.mZ());
+		$('#dropdown-item-cube-z-two').on('click', e => this.cube.mZ(CubeMoveAngle.C180));
+		$('#dropdown-item-cube-z-invert').on('click', e => this.cube.mZ(CubeMoveAngle.CC90));
 	
-		$('#button-cube-shuffle').on('click', e => this.cube.shuffleByMove());
+		$('#dropdown-cube-shuffle-move-set').on('click', async e => { const cubeClone = new Cube(this.cube.spec, this.cube.solutionCondition, this.cube.getState()); await cubeClone.shuffleByMove(50); this.cube.setState(cubeClone.getState()); });
+		$('#dropdown-cube-shuffle-move-play').on('click', e => this.cube.shuffleByMove(50));
+		$('#button-cube-reset').on('click', e => this.cube.setState(CubeState.fromSolved(this.cube.spec, this.cube.solutionCondition)));
+
+		const updateAnimationDuration = (d: number) => ((e: JQuery.ClickEvent<HTMLElement, undefined, HTMLElement, HTMLElement>) => { $(e.target).siblings().removeClass('checked'); $(e.target).addClass('checked'); this.visualizer.animationDuration = d; })
+		$('#dropdown-cube-speed-none').on('click', updateAnimationDuration(0));
+		$('#dropdown-cube-speed-quick').on('click', updateAnimationDuration(200));
+		$('#dropdown-cube-speed-normal').on('click', updateAnimationDuration(500));
+		$('#dropdown-cube-speed-slow').on('click', updateAnimationDuration(1000));
+
 	}
 
 	hideLoader(): void {
