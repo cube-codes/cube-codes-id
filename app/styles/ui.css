@@ -76,6 +76,11 @@ main > .row:nth-child(2) {
      margin-left: 6px;
 }
 
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
 .dropdown-item {
     cursor: pointer;
 }
@@ -104,6 +109,10 @@ img.flip {
     background-color: #f0f0f0;
 }
 
+#button-view-reset > img {
+    filter: saturate(#212529) hue-rotate(#212529);
+}
+
 #section-cube-control {
     position: absolute;
     bottom: 0;
@@ -114,6 +123,7 @@ img.flip {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-top: 1px solid #dee2e6 !important;
 }
 
 #section-cube-control .btn-group:nth-child(6) {
