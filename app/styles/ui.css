@@ -2,12 +2,63 @@
     user-select: none;
 }
 
+[data-flex-splitter-horizontal] > *, [data-flex-splitter-vertical] > * {
+    overflow: visible;
+}
+
+[data-flex-splitter-vertical] > [role=separator] {
+    height: 4px;
+    background-color: #DDD;
+}
+
+[data-flex-splitter-horizontal] > [role=separator] {
+    width: 4px;
+    background-color: #DDD;
+}
+
+/* Structure */
+
+#section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#section-1 {
+    flex: auto;
+    display: flex;
+    min-height: 400px;
+}
+
+#section-10 {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 600px;
+}
+
+#section-11 {
+    width: 50%;
+    min-width: 600px;
+}
+
+#section-2 {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+/* Header Widget */
+
 .navbar .navbar-brand img {
     vertical-align: text-bottom;
     height: 28px;
     margin-right: 6px;
     filter: invert(1); 
 }
+
+/* Toast Zone */
 
 #toast-zone {
     position: absolute;
@@ -48,112 +99,113 @@
     display: none;
 }
 
-main > .row:nth-child(1) {
-    min-height: calc(100vh - 56px - 200px);
+/* Editor Widget */
+
+#editor {
+    display: flex;
 }
 
-main > .row:nth-child(2) {
+#editor-ace {
+    flex: 1;
+    overflow-y: scroll;
+    min-height: 100px;
+}
+
+#editor-log {
     height: 200px;
+    min-height: 100px;
+    flex-shrink: 1;
+    font-variant-ligatures: no-common-ligatures;
+    font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    white-space: pre;
+    overflow-y: scroll;
+    overflow-x: auto;
+    background-color: #f0f0f0;
+    padding: 12px;
 }
 
-.panel > .btn-toolbar {
+#editor-log * {
+    user-select: text;
+}
+
+#editor-log > .log.text-info {
+    color: black !important;
+}
+
+#editor-log > .log.text-success, #editor-log > .log.text-warning, #editor-log > .log.text-danger {
+    font-weight: bolder;
+}
+
+/* General Buttons */
+
+.btn-toolbar {
     background-color: #DDD;
     padding: 8px 16px;
     height: 50px;
 }
 
-#panel-control > .btn-toolbar {
-    margin: 0 -15px;
-}
-
 .btn > img {
-     filter: invert(1);
-     margin-top: -4px;
-     width: 16px;
+    filter: invert(1);
+    margin-top: -4px;
+    width: 16px;
 }
 
 .btn > img + span {
-     margin-left: 6px;
+    margin-left: 6px;
 }
 
 .btn:focus {
-    outline: none;
-    box-shadow: none;
-  }
+   outline: none;
+   box-shadow: none;
+ }
 
 .dropdown-item {
-    cursor: pointer;
+   cursor: pointer;
 }
 
 .dropdown-item.checked {
-    background-image: url(../images/own-icons/dot-checked.svg);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 30px;
+   background-image: url(../images/own-icons/dot-checked.svg);
+   background-repeat: no-repeat;
+   background-position: left center;
+   background-size: 30px;
+}
+
+img.invert {
+   filter: invert(100%);
 }
 
 img.flip {
-    transform: scaleX(-1);
+   transform: scaleX(-1);
 }
 
-#panel-control > section {
-    text-align: center;
-    margin: 80px 0;
+/* General Modal */
+
+.modal-header > img {
+    width: 30px;
 }
 
-#section-cube-display {
-    position: absolute;
-    top: 50px;
-    bottom: 300px;
-    width: 100%;
-    background-color: #f0f0f0;
-}
+/* History Widget */
 
-#button-view-reset > img {
-    filter: saturate(#212529) hue-rotate(#212529);
-}
-
-#section-cube-control {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 300px;
-    background-color: #f0f0f0;
+#history {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid #dee2e6 !important;
+    overflow: hidden;
 }
 
-#section-cube-control .btn-group:nth-child(6) {
-    margin: 0 0 0 30px;
+#history > .btn-toolbar {
+    padding-top: 4px; /* Substract splitter height */
+    height: 46px; /* Substract splitter height */
 }
 
-#section-cube-control .btn-group:nth-child(6) button:nth-child(1) {
-    width: 110px;
-}
-
-#section-cube-control .btn-group button:nth-child(1) {
-    width: 90px;
-    margin: 0 0 10px 5px;
-    text-align: left;
-}
-
-#section-cube-control .btn-group button:nth-child(2) {
-    margin: 0 5px 10px 0;
-}
-
-#section-history-changes {
-    position: absolute;
-    top: 50px;
-    bottom: 0;
-    width: 100%;
+#history-changes {
+    flex: 1;
+    position: relative;
     overflow-y: scroll;
     padding: 6px 14px;
 }
 
-#section-history-changes > span {
+#history-changes > span {
     display: inline-block;
     padding: 6px 12px !important;
     margin: 2px;
@@ -162,47 +214,66 @@ img.flip {
     background-color: #f0f0f0;
 }
 
-#section-history-changes > span.current {
+#history-changes > span.current {
     background-color: var(--primary) !important;
     color: white;
 }
 
-#section-history-changes > span:hover {
+#history-changes > span:hover {
     background-color: var(--secondary);
     color: white;
 }
 
-#editor {
-    position: absolute;
-    top: 50px;
-    bottom: 300px;
-    width: 100%;
-    overflow-y: scroll;
+/* Cube Widget */
+
+#cube {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-#logger {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 300px;
-    font-variant-ligatures: no-common-ligatures;
-    font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
-    white-space: pre;
-    overflow-y: scroll;
-    overflow-x: auto;
+#cube-display {
+    flex: 1;
     background-color: #f0f0f0;
-    padding: 12px;
-    border-top: 1px solid #dee2e6 !important;
+    position: relative;
 }
 
-#logger * {
-    user-select: text;
+#cube-display > canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
-#logger > .log.text-info {
-    color: black !important;
+#cube-control {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 60px;
 }
 
-#logger > .log.text-success, #logger > .log.text-warning, #logger > .log.text-danger {
-    font-weight: bolder;
+#cube-control .btn-group {
+    margin: 4px;
+}
+
+#cube-control .btn-group:nth-last-child(1) {
+    margin-left: 44px;
+}
+
+#cube-control button:nth-child(1) {
+    width: 64px;
+}
+
+/*///////////////////////////////////////////////////////////////////////*/
+
+.link-generator {
+    width: 100%;
+}
+
+.link-generator label {
+    width: 100px;
+    justify-content: start;
+}
+
+.link-generator input {
+    flex: 1;
 }
