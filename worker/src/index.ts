@@ -10,8 +10,11 @@ export * from '../../common/src/Messages/MessageData';
 export * from '../../common/src/Messages/MessageInbox';
 export * from '../../common/src/Messages/MessageListener';
 
-export * from './ExecutionApi';
-export * from './ExecutionContext';
-export * from './MessageQueueChangeDetector';
-export * from './ProgramWorker';
-export * from './ProgramWorkerMessageBus';
+export * from './Execution/CubeApi';
+export * from './Execution/ExecutionApi';
+export * from './Execution/ExecutionContext';
+
+export * from './Worker/MessageQueueChangeDetector';
+export * from './Worker/ProgramWorker';
+export * from './Worker/ProgramWorkerGlobal';
+export * from './Worker/ProgramWorkerMessageBus';

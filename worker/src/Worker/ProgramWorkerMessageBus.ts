@@ -1,9 +1,9 @@
-import { CubeStateSync } from "../../common/src/Message Bus/CubeStateSync";
-import { UiSync } from "../../common/src/Message Bus/UiSync";
-import { WorkerFinishedSync } from "../../common/src/Message Bus/WorkerFinishedSync";
-import { MessageInbox } from "../../common/src/Messages/MessageInbox";
-import { WorkerContinueSync, WorkerContinueSyncType } from "../../common/src/Message Bus/WorkerContinueSync";
-import { WorkerStartSync, WorkerStartSyncType } from "../../common/src/Message Bus/WorkerStartSync";
+import { CubeStateSync } from "../../../common/src/Message Bus/CubeStateSync";
+import { UiSync } from "../../../common/src/Message Bus/UiSync";
+import { WorkerFinishedSync } from "../../../common/src/Message Bus/WorkerFinishedSync";
+import { MessageInbox } from "../../../common/src/Messages/MessageInbox";
+import { WorkerContinueSync, WorkerContinueSyncType } from "../../../common/src/Message Bus/WorkerContinueSync";
+import { WorkerStartSync, WorkerStartSyncType } from "../../../common/src/Message Bus/WorkerStartSync";
 import { MessageBufferChangeDetector as MessageQueueChangeDetector } from "./MessageQueueChangeDetector";
 
 export type ProgramWorkerOutboundMessage = CubeStateSync | UiSync | WorkerFinishedSync

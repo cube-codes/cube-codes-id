@@ -1,23 +1,26 @@
-import { CubeState, CubeMove } from "@cube-codes/cube-codes-model";
+import { CubeState, CubeMove, Exportable, CubeStateExport, CubeMoveExport, CubeSpecification } from "@cube-codes/cube-codes-model";
+
+export class CubeHistoryChangeExport {
+
+	constructor(readonly oldState: CubeStateExport,
+		readonly newState: CubeStateExport,
+		readonly move?: CubeMoveExport) { }
+
+}
 
 /**
  * Change of a {@link Cube}'s {@link CubeState} possibly through a {@link CubeMove} that is recorded by the {@link CubeHistory}
  */
-export interface CubeHistoryChange {
+export class CubeHistoryChange implements Exportable<CubeHistoryChangeExport> {
 
-	/**
-	 * {@link CubeState} before the change
-	 */
-	readonly oldState: CubeState
+	constructor(readonly oldState: CubeState, readonly newState: CubeState, readonly move?: CubeMove) {}
 
-	/**
-	 * {@link CubeState} after the change
-	 */
-	readonly newState: CubeState
+	static import(spec: CubeSpecification, value: CubeHistoryChangeExport): CubeHistoryChange {
+		return new CubeHistoryChange(CubeState.import(spec, value.oldState), CubeState.import(spec, value.newState), value.move === undefined ? undefined : CubeMove.import(spec, value.move));
+	}
 
-	/**
-	 * Possible {@link CubeMove} while changing the {@link CubeState}
-	 */
-	readonly move?: CubeMove
+	export(): CubeHistoryChangeExport {
+		return new CubeHistoryChangeExport(this.oldState.export(), this.newState.export(), this.move?.export());
+	}
 	
 }

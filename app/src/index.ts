@@ -16,4 +16,5 @@ export * from './Manager/ProgramManagerStateChanged';
 export * from './Manager/ProgramWorkerContext';
 export * from './Manager/ProgramWorkerContextMessageBus';
 
-export * from './Ui';
+export * from './UI/Ui';
+export * from './UI/UiLoader';

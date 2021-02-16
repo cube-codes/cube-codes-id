@@ -1,5 +1,5 @@
-import { Level } from "../../common/src/Level";
-import { ProgramWorkerMessageBus } from "./ProgramWorkerMessageBus";
+import { Level } from "../../../common/src/Level";
+import { ProgramWorkerMessageBus } from "../Worker/ProgramWorkerMessageBus";
 
 export class ExecutionApi {
 

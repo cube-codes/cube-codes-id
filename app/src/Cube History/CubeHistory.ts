@@ -1,4 +1,4 @@
-import { CubeState, Cube, Event } from "@cube-codes/cube-codes-model"
+import { CubeState, Cube, Event, CubeMove } from "@cube-codes/cube-codes-model"
 import { CubeHistoryChange } from "./CubeHistoryChange"
 import { CubeHistoryFutureCleaned } from "./CubeHistoryFutureCleaned"
 import { CubeHistoryMoved } from "./CubeHistoryMoved"
@@ -94,15 +94,23 @@ export class CubeHistory {
 			}
 
 			// Record change and move
-			const newChange: CubeHistoryChange = { oldState: e.oldState, newState: e.newState, move: e.move };
+			const newChange = new CubeHistoryChange(e.oldState, e.newState, e.move);
 			this.#changes.push(newChange);
 			this.recorded.trigger({ change: newChange, position: newChangeIndex });
-			const oldChangeIndex = this.#currentPosition;
+			const oldPosition = this.#currentPosition;
 			this.#currentPosition = newChangeIndex;
-			this.moved.trigger({ from: oldChangeIndex, by: 1, to: this.#currentPosition });
+			this.moved.trigger({ from: oldPosition, by: 1, to: this.#currentPosition });
 
 		});
 
+	}
+
+	get initialState(): CubeState {
+		return this.#initialState;
+	}
+
+	get changes(): ReadonlyArray<CubeHistoryChange> {
+		return this.#changes;
 	}
 
 	/**
@@ -150,13 +158,27 @@ export class CubeHistory {
 
 	}
 
+	async restoreChanges(changes: ReadonlyArray<CubeState | CubeMove>, position: number): Promise<void> {
+
+		for(const change of changes) {
+			if(change instanceof CubeState) {
+				await this.#cube.setState(change, { animation: false });
+			} else {
+				await this.#cube.move(change, { animation: false });
+			}
+		}
+
+		await this.jumpToPosition(position);
+	
+	}
+
 	/**
 	 * Removes the {@link CubeHistoryChange}s up until exclusivly a specified position
 	 * 
 	 * The initial state is set to the final state of "position" and is marked as the current position if the former was removed.
 	 * @param position - Position up until exclusivly the history is removed
 	 */
-	cleanPastBefore(position: number) {
+	async cleanPastBefore(position: number): Promise<void> {
 
 		if(!Number.isInteger(position) || position < -1 || position > this.#changes.length - 1) throw 'Invalid position';
 	
@@ -170,7 +192,7 @@ export class CubeHistory {
 			this.#currentPosition = -1;
 		}
 
-		this.pastCleaned.trigger({before: position});
+		await this.pastCleaned.trigger({before: position});
 
 	}
 
@@ -180,7 +202,7 @@ export class CubeHistory {
 	 * "positon" is marked as the current position if the former was removed.
 	 * @param position - Position from down exclusivly the history is removed
 	 */
-	cleanFutureAfter(position: number) {
+	async cleanFutureAfter(position: number): Promise<void> {
 
 		if(!Number.isInteger(position) || position < -1 || position > this.#changes.length - 1) throw 'Invalid position';
 
@@ -190,7 +212,7 @@ export class CubeHistory {
 			this.#currentPosition = position;
 		}
 
-		this.futureCleaned.trigger({after: position});
+		await this.futureCleaned.trigger({after: position});
 
 	}
 
@@ -203,7 +225,7 @@ export class CubeHistory {
 
 		const currentChange = this.#changes[this.#currentPosition];
 		if (currentChange.move) {
-			await this.#cube.move(currentChange.move.getInverse(), {
+			await this.#cube.move(currentChange.move.getInverse(this.#cube.spec), {
 				history: -1
 			});
 		} else {
@@ -237,11 +259,11 @@ export class CubeHistory {
 	/**
 	 * Jumps back the initial position (= -1) within the history and updates the {@link Cube}'s {@link CubeState} without a {@link CubeMove} (setState)
 	 */
-	jumpToStart(): void {
+	async jumpToStart(): Promise<void> {
 
 		if (this.#currentPosition <= -1) return;
 
-		this.#cube.setState(this.#initialState, {
+		await this.#cube.setState(this.#initialState, {
 			history: -this.#currentPosition - 1,
 			animation: false
 		});
@@ -251,7 +273,7 @@ export class CubeHistory {
 	/**
 	 * Jumps ahead the final position (= list length - 1) within the history and updates the {@link Cube}'s {@link CubeState} without a {@link CubeMove} (setState)
 	 */
-	jumpToEnd(): void {
+	async jumpToEnd(): Promise<void> {
 
 		if (this.#currentPosition >= this.#changes.length - 1) return;
 
@@ -260,7 +282,7 @@ export class CubeHistory {
 		}
 
 		const lastChange = this.#changes[this.#changes.length - 1];
-		this.#cube.setState(lastChange.newState, {
+		await this.#cube.setState(lastChange.newState, {
 			history: this.#changes.length - 1 - this.#currentPosition,
 			animation: false
 		});
@@ -270,17 +292,17 @@ export class CubeHistory {
 	/**
 	 * Jumps to the specified position within the history and updates the {@link Cube}'s {@link CubeState} without a {@link CubeMove} (setState)
 	 */
-	jumpToIndex(newPosition: number): void {
+	async jumpToPosition(newPosition: number): Promise<void> {
 
 		if (!Number.isInteger(newPosition) || newPosition < -1 || newPosition > this.#changes.length - 1) throw new Error(`Invalid position: ${newPosition}`);
 
 		if (newPosition === -1) {
-			this.jumpToStart();
+			await this.jumpToStart();
 			return;
 		}
 
 		const newChange = this.#changes[newPosition];
-		this.#cube.setState(newChange.newState, {
+		await this.#cube.setState(newChange.newState, {
 			history: newPosition - this.#currentPosition,
 			animation: false
 		});
