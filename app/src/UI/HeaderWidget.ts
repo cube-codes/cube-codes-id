@@ -6,10 +6,10 @@ import { Ui } from "./Ui";
 export class HeaderWidget {
 
 	private static readonly MODES: ReadonlyMap<string, string> = new Map([
-		['2-1', '2x2x2 Colored (Rubik\'s Mini)'],
-		['3-1', '3x3x3 Colored (Rubik\'s Cube)'],
-		['4-1', '4x4x4 Colored (Rubik\'s Revenge)'],
-		['5-1', '5x5x5 Colored (Professor\'s Cube)']
+		['2-1', 'Colored 2x2x2 (Pocket Cube)'],
+		['3-1', 'Colored 3x3x3 (Rubik\'s Cube)'],
+		['4-1', 'Colored 4x4x4 (Master Cube)'],
+		['5-1', 'Colored 5x5x5 (Professor\'s Cube)']
 	]);
 
 	constructor(private readonly ui: Ui) {
