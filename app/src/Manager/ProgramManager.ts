@@ -18,6 +18,10 @@ export class ProgramManager {
 		this.workerContext = undefined;
 	}
 
+	getState(): ProgramManagerState {
+		return this.state;
+	}
+
 	private setState(newState: ProgramManagerState) {
 		const oldState = this.state;
 		this.state = newState;
@@ -80,7 +84,7 @@ export class ProgramManager {
 
 	abort(): void {
 
-		if (this.state !== ProgramManagerState.RUNNING) throw new Error(`Invalid worker state: ${this.state}`);
+		if (this.state !== ProgramManagerState.RUNNING) throw new Error(`Invalid program manager state: ${this.state}`);
 
 		this.workerContext?.terminate();
 

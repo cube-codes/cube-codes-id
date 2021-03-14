@@ -1,9 +1,10 @@
 import { html } from "./Html";
 import $ from "jquery";
 import { Ui } from "./Ui";
-import { CubeApi } from "./CubeApi";
 import { CubeFace, CubeState, Dimension } from "@cube-codes/cube-codes-model";
 import { CubeVisualizer } from "@cube-codes/cube-codes-visualizer";
+import { UiState } from "./UiState";
+import { CubeApi } from "../../../common/src/Cube Api/CubeApi";
 
 export class CubeWidget {
 
@@ -38,6 +39,8 @@ export class CubeWidget {
 						Moves</span>
 					<span id="cube-shuffle-move-play" class="dropdown-item" title="Shuffle cube by applying 50 random moves (recorded in the history)">Shuffle via Moves
 						(recording)</span>
+					<div class="dropdown-divider"></div>
+					<span id="cube-shuffle-explosion" class="dropdown-item" title="Shuffle cube by exploding it">Shuffle via Explosion</span>
 				</div>
 			</div>
 			<button type="button" id="cube-reset" class="btn btn-primary" title="Reset cube to the solved state"><img
@@ -69,11 +72,11 @@ export class CubeWidget {
 		const addControl = (parent: JQuery<HTMLElement>, caption: string, title: string, moveAction: (angle: number, source?: object) => void) => {
 			const control = $(html`
 <div class="btn-group btn-group-sm">
-	<button type="button" class="btn btn-secondary" title="${title} 90° CW">
+	<button type="button" class="btn btn-secondary cube-move" title="${title} 90° CW">
 		<img src="images/own-icons/cube-${caption}.svg" />
 		<span>${caption}</span>
 	</button>
-	<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" title="More angles" />
+	<button type="button" class="btn btn-secondary cube-move-angles dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" title="More angles" />
 	<div class="dropdown-menu">
 		<span class="dropdown-item" title="${title} 180° CW">Double</span>
 		<span class="dropdown-item" title="${title} 90° CCW">Invert</span>
@@ -114,11 +117,18 @@ export class CubeWidget {
 			await cubeCloneApi.shuffleByMove(50);
 			this.ui.cube.setState(cubeClone.getState());
 		});
-		$('#cube-shuffle-move-play').on('click', e => {
-			this.cubeApi.shuffleByMove(50);
+		$('#cube-shuffle-move-play').on('click', async e => {
+			this.ui.setState(UiState.EXECUTING);
+			await this.cubeApi.shuffleByMove(50, {
+				animation: false
+			});
+			this.ui.setState(UiState.IDLE);
 		});
-		$('#cube-reset').on('click', e => {
-			this.ui.cube.setState(CubeState.fromSolved(this.ui.cube.spec));
+		$('#cube-shuffle-explosion').on('click', async e => {
+			await this.cubeApi.shuffleByExplosion();
+		});
+		$('#cube-reset').on('click', async e => {
+			await this.ui.cube.setState(CubeState.fromSolved(this.ui.cube.spec));
 		});
 
 		const updateAnimationDuration = (d: number) => ((e: JQuery.ClickEvent<any, any, any, any>) => {
@@ -137,7 +147,17 @@ export class CubeWidget {
 
 	private setupBlocking() {
 
-		//TODO: Also stop button and listen for editor run
+		const updateButtons = () => {
+			const uiActive = this.ui.getState() !== UiState.IDLE;
+			$('#cube-shuffle'    ).prop('disabled', uiActive);
+			$('#cube-reset'      ).prop('disabled', uiActive);
+			$('.cube-move'       ).prop('disabled', uiActive);
+			$('.cube-move-angles').prop('disabled', uiActive);
+		};
+
+		this.ui.stateChanged.on(updateButtons);
+		
+		updateButtons();
 
 	}
 

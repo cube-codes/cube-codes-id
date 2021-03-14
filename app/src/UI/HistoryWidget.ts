@@ -3,6 +3,8 @@ import $ from "jquery";
 import { Ui } from "./Ui";
 import { CubeMoveStringifier } from "@cube-codes/cube-codes-model";
 import { CubeHistoryChange } from "../Cube History/CubeHistoryChange";
+import { CubeHistoryState } from "../Cube History/CubeHistoryState";
+import { UiState } from "./UiState";
 
 export class HistoryWidget {
 
@@ -98,6 +100,7 @@ export class HistoryWidget {
 		$('#history-jump-start'  ).on('click', e => this.ui.cubeHistory.jumpToStart());
 		$('#history-jump-end'    ).on('click', e => this.ui.cubeHistory.jumpToEnd());
 		$('#history-step-back'   ).on('click', e => this.ui.cubeHistory.stepBack());
+		$('#history-abort'       ).on('click', e => this.ui.cubeHistory.abort());
 		$('#history-step-ahead'  ).on('click', e => this.ui.cubeHistory.stepAhead());
 		$('#history-play-back'   ).on('click', e => this.ui.cubeHistory.playBack());
 		$('#history-play-ahead'  ).on('click', e => this.ui.cubeHistory.playAhead());
@@ -107,21 +110,28 @@ export class HistoryWidget {
 	}
 
 	private setupBlocking() {
-	
-		//TODO: Also stop button and listen for editor run
 
-		const updateHistoryButtons = () => {
-			$('#history-jump-start'  ).prop('disabled', this.ui.cubeHistory.isAtStart());
-			$('#history-play-back'   ).prop('disabled', this.ui.cubeHistory.isAtStart());
-			$('#history-step-back'   ).prop('disabled', this.ui.cubeHistory.isAtStart());
-			$('#history-step-ahead'  ).prop('disabled', this.ui.cubeHistory.isAtEnd());
-			$('#history-play-ahead'  ).prop('disabled', this.ui.cubeHistory.isAtEnd());
-			$('#history-jump-end'    ).prop('disabled', this.ui.cubeHistory.isAtEnd());
+		const updateButtons = () => {
+			const historyActive = this.ui.cubeHistory.getState() !== CubeHistoryState.IDLE;
+			const uiActive = this.ui.getState() !== UiState.IDLE;
+			$('#history-changes'     ).css('pointer-events', uiActive ? 'none' : 'auto');
+			$('#history-jump-start'  ).prop('disabled', uiActive || this.ui.cubeHistory.isAtStart());
+			$('#history-play-back'   ).prop('disabled', uiActive || this.ui.cubeHistory.isAtStart());
+			$('#history-step-back'   ).prop('disabled', uiActive || this.ui.cubeHistory.isAtStart());
+			$('#history-abort'       ).prop('disabled', !historyActive);
+			$('#history-step-ahead'  ).prop('disabled', uiActive || this.ui.cubeHistory.isAtEnd());
+			$('#history-play-ahead'  ).prop('disabled', uiActive || this.ui.cubeHistory.isAtEnd());
+			$('#history-jump-end'    ).prop('disabled', uiActive || this.ui.cubeHistory.isAtEnd());
+			$('#history-clean-past'  ).prop('disabled', uiActive || this.ui.cubeHistory.isAtStart());
+			$('#history-clean-future').prop('disabled', uiActive || this.ui.cubeHistory.isAtEnd());
 		};
-		this.ui.cubeHistory.moved.on(updateHistoryButtons);
-		this.ui.cubeHistory.pastCleaned.on(updateHistoryButtons);
-		this.ui.cubeHistory.futureCleaned.on(updateHistoryButtons);
-		updateHistoryButtons();
+
+		this.ui.stateChanged.on(updateButtons);
+		this.ui.cubeHistory.moved.on(updateButtons);
+		this.ui.cubeHistory.pastCleaned.on(updateButtons);
+		this.ui.cubeHistory.futureCleaned.on(updateButtons);
+		
+		updateButtons();
 
 	}
 

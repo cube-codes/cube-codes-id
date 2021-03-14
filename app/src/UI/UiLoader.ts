@@ -1,7 +1,7 @@
 import { Ui } from "./Ui";
 import $ from "jquery";
 import { CubeSolutionCondition, CubeSpecification, CubeState } from "@cube-codes/cube-codes-model";
-import { AppState } from "../AppState/AppState";
+import { AppState } from "../App State/AppState";
 import { Level } from "../../../common/src/Level";
 
 export class UiLoader {

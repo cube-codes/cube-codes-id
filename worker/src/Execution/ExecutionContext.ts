@@ -1,6 +1,6 @@
 import { Cube, CubeSolutionCondition, CubeSpecification, CubeState } from "@cube-codes/cube-codes-model";
 import { WorkerFinishedSync } from "../../../common/src/Message Bus/WorkerFinishedSync";
-import { CubeApi } from "./CubeApi";
+import { CubeApi } from "../../../common/src/Cube Api/CubeApi";
 import { ExecutionApi } from "./ExecutionApi";
 import { ProgramWorkerMessageBus } from "../Worker/ProgramWorkerMessageBus";
 

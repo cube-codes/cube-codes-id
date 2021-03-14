@@ -4,6 +4,8 @@ import { CubeHistoryFutureCleaned } from "./CubeHistoryFutureCleaned"
 import { CubeHistoryMoved } from "./CubeHistoryMoved"
 import { CubeHistoryPastCleaned } from "./CubeHistoryPastCleaned"
 import { CubeHistoryRecorded } from "./CubeHistoryRecorded"
+import { CubeHistoryState } from "./CubeHistoryState"
+import { CubeHistoryStateChanged } from "./CubeHistoryStateChanged"
 
 /**
  * History holding all changes to one specific {@link Cube}
@@ -44,6 +46,12 @@ export class CubeHistory {
 	 */
 	readonly futureCleaned = new Event<CubeHistoryFutureCleaned>()
 
+	readonly stateChanged = new Event<CubeHistoryStateChanged>()
+
+	private state: CubeHistoryState
+
+	private terminatePlaying: boolean
+
 	/**
 	 * {@link Cube} that is listened on for {@link CubeHistoryChange}s of its {@link CubeState}
 	 */
@@ -52,7 +60,7 @@ export class CubeHistory {
 	/**
 	 * Initial {@link CubeState} when the history started to listen on the {@link Cube}
 	 */
-	#initialState: CubeState
+	#initialCubeState: CubeState
 
 	/**
 	 * List of recorded {@link CubeHistoryChange}s describing changes of the {@link Cube}'s {@link CubeState}s
@@ -71,8 +79,10 @@ export class CubeHistory {
 	 */
 	constructor(cube: Cube) {
 
+		this.state = CubeHistoryState.IDLE;
+		this.terminatePlaying = false;
 		this.#cube = cube
-		this.#initialState = this.#cube.getState();
+		this.#initialCubeState = this.#cube.getState();
 		this.#changes = new Array();
 		this.#currentPosition = -1;
 
@@ -105,8 +115,12 @@ export class CubeHistory {
 
 	}
 
-	get initialState(): CubeState {
-		return this.#initialState;
+	getState(): CubeHistoryState {
+		return this.state;
+	}
+
+	get initialCubeState(): CubeState {
+		return this.#initialCubeState;
 	}
 
 	get changes(): ReadonlyArray<CubeHistoryChange> {
@@ -158,6 +172,25 @@ export class CubeHistory {
 
 	}
 
+	private setState(newState: CubeHistoryState): void {
+		const oldState = this.state;
+		this.state = newState;
+		this.stateChanged.trigger({
+			oldState: oldState,
+			newState: newState
+		});
+	}
+
+	abort(): void {
+
+		if (this.state !== CubeHistoryState.PLAYING) throw new Error(`Invalid cube history state: ${this.state}`);
+
+		this.terminatePlaying = true;
+
+		this.setState(CubeHistoryState.IDLE);
+
+	}
+
 	async restoreChanges(changes: ReadonlyArray<CubeState | CubeMove>, position: number): Promise<void> {
 
 		for(const change of changes) {
@@ -184,7 +217,7 @@ export class CubeHistory {
 	
 		if(position <= -1) return;
 
-		this.#initialState = this.getChangeByPosition(position).newState;
+		this.#initialCubeState = this.getChangeByPosition(position).newState;
 
 		this.#changes.splice(0, position + 1);
 
@@ -263,7 +296,7 @@ export class CubeHistory {
 
 		if (this.#currentPosition <= -1) return;
 
-		await this.#cube.setState(this.#initialState, {
+		await this.#cube.setState(this.#initialCubeState, {
 			history: -this.#currentPosition - 1,
 			animation: false
 		});
@@ -313,9 +346,14 @@ export class CubeHistory {
 
 		if (this.isAtStart()) throw new Error('Cannot go back further');
 
-		while(!this.isAtStart()) {
+		this.terminatePlaying = false;
+		this.setState(CubeHistoryState.PLAYING);
+
+		while(!this.isAtStart() && !this.terminatePlaying) {
 			await this.stepBack();
 		}
+
+		this.setState(CubeHistoryState.IDLE);
 
 	}
 
@@ -323,9 +361,14 @@ export class CubeHistory {
 
 		if (this.isAtEnd()) throw new Error('Cannot go ahead further');
 
-		while(!this.isAtEnd()) {
+		this.terminatePlaying = false;
+		this.setState(CubeHistoryState.PLAYING);
+
+		while(!this.isAtEnd() && !this.terminatePlaying) {
 			await this.stepAhead();
 		}
+
+		this.setState(CubeHistoryState.IDLE);
 
 	}
 

@@ -1,7 +1,8 @@
 import { html } from "./Html";
 import $ from "jquery";
-import { AppState, AutomaticActionType } from "../AppState/AppState";
+import { AppState, AutomaticActionType } from "../App State/AppState";
 import { Ui } from "./Ui";
+import { UiState } from "./UiState";
 
 export class HeaderWidget {
 
@@ -202,7 +203,7 @@ export class HeaderWidget {
 				description,
 				this.ui.cube.spec,
 				this.ui.cube.solutionCondition,
-				historyReduce ? this.ui.cube.getState() : this.ui.cubeHistory.initialState,
+				historyReduce ? this.ui.cube.getState() : this.ui.cubeHistory.initialCubeState,
 				historyReduce ? [] : this.ui.cubeHistory.changes.map(c => c.move ? c.move : c.newState),
 				historyReduce ? -1 : this.ui.cubeHistory.getCurrentPosition(),
 				omitCode ? '' : this.ui.editorWidget.getCode(),
@@ -242,7 +243,7 @@ export class HeaderWidget {
 				description,
 				this.ui.cube.spec,
 				this.ui.cube.solutionCondition,
-				historyReduce ? this.ui.cube.getState() : this.ui.cubeHistory.initialState,
+				historyReduce ? this.ui.cube.getState() : this.ui.cubeHistory.initialCubeState,
 				historyReduce ? [] : this.ui.cubeHistory.changes.map(c => c.move ? c.move : c.newState),
 				historyReduce ? -1 : this.ui.cubeHistory.getCurrentPosition(),
 				omitCode ? '' : this.ui.editorWidget.getCode(),
@@ -269,7 +270,17 @@ export class HeaderWidget {
 
 	private setupBlocking() {
 
-		//TODO: Setup Button Blocking
+		const updateButtons = () => {
+			const uiActive = this.ui.getState() !== UiState.IDLE;
+			$('#header-mode' ).prop('disabled', uiActive);
+			$('#header-load' ).prop('disabled', uiActive);
+			$('#header-save' ).prop('disabled', uiActive);
+			$('#header-share').prop('disabled', uiActive);
+		};
+
+		this.ui.stateChanged.on(updateButtons);
+		
+		updateButtons();
 
 	}
 

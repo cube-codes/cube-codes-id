@@ -7,6 +7,7 @@ import { Search } from "ace-builds/src-noconflict/ext-searchbox"
 import { Level } from "../../../common/src/Level";
 import { BootstrapInfo } from "./BootstrapInfo";
 import { ProgramManagerState } from "../Manager/ProgramManagerState";
+import { UiState } from "./UiState";
 
 export class EditorWidget {
 
@@ -121,18 +122,23 @@ export class EditorWidget {
 
 	private setupBlocking() {
 
-		//TODO: Button State
 		this.ace.on('input', () => {
 			$('#editor-undo').prop('disabled', !this.ace.session.getUndoManager().canUndo());
 			$('#editor-redo').prop('disabled', !this.ace.session.getUndoManager().canRedo());
 		});
 
-		this.ui.programManager.stateChanged.on(e => {
-			const running = e.newState !== ProgramManagerState.IDLE;
-			$('#editor-abort'   ).prop('disabled', !running);
-			$('#editor-run'     ).prop('disabled', running);
-			$('#editor-run-fast').prop('disabled', running);
-		})
+		const updateButtons = () => {
+			const programManagerActive = this.ui.programManager.getState() !== ProgramManagerState.IDLE;
+			const uiActive = this.ui.getState() !== UiState.IDLE;
+			$('#history-jump-start'  ).prop('disabled', uiActive || this.ui.cubeHistory.isAtStart());
+			$('#editor-abort'   ).prop('disabled', !programManagerActive);
+			$('#editor-run'     ).prop('disabled', uiActive);
+			$('#editor-run-fast').prop('disabled', uiActive);
+		};
+
+		this.ui.stateChanged.on(updateButtons);
+		
+		updateButtons();
 
 	}
 

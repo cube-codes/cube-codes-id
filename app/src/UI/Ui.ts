@@ -1,10 +1,10 @@
 import { HeaderWidget } from "./HeaderWidget";
-import { Cube } from "@cube-codes/cube-codes-model";
+import { Cube, Event } from "@cube-codes/cube-codes-model";
 import { CubeHistory } from "../Cube History/CubeHistory";
 import { EditorWidget } from "./EditorWidget";
 import { ProgramManager } from "../Manager/ProgramManager";
 import { HistoryWidget } from "./HistoryWidget";
-import { AppState, AutomaticActionType } from "../AppState/AppState";
+import { AppState, AutomaticActionType } from "../App State/AppState";
 import { CubeWidget } from "./CubeWidget";
 import { Toast } from "bootstrap";
 import { html } from "./Html";
@@ -12,8 +12,16 @@ import { BootstrapInfo } from "./BootstrapInfo";
 import { Level } from "../../../common/src/Level";
 import $ from "jquery";
 import "flex-splitter-directive";
+import { UiState } from "./UiState";
+import { UiStateChanged } from "./UiStateChanged";
+import { CubeHistoryState } from "../Cube History/CubeHistoryState";
+import { ProgramManagerState } from "../Manager/ProgramManagerState";
 
 export class Ui {
+
+	readonly stateChanged = new Event<UiStateChanged>()
+
+	private state: UiState
 
 	readonly cube: Cube
 
@@ -24,13 +32,17 @@ export class Ui {
 	#editorWidget?: EditorWidget
 
 	constructor(readonly initialAppState: AppState, afterSetupActions: Array<(ui: Ui) => void>) {
+
+		this.state = UiState.IDLE;
 		
 		// Cube Model
 		this.cube = new Cube(this.initialAppState.cubeSpec, this.initialAppState.cubeSolutionCondition, this.initialAppState.cubeHistoryInitialState);
 		
 		// Services
 		this.cubeHistory = new CubeHistory(this.cube);
+		this.cubeHistory.stateChanged.on(e => this.setState(e.newState === CubeHistoryState.IDLE ? UiState.IDLE : UiState.EXECUTING));
 		this.programManager = new ProgramManager(this);
+		this.programManager.stateChanged.on(e => this.setState(e.newState === ProgramManagerState.IDLE ? UiState.IDLE : UiState.EXECUTING));
 
 		this.cubeHistory.restoreChanges(this.initialAppState.cubeHistoryEntries, this.initialAppState.cubeHistoryCurrentPosition).then(async () => {
 
@@ -54,9 +66,22 @@ export class Ui {
 
 	}
 
+	getState(): UiState {
+		return this.state;
+	}
+
 	get editorWidget(): EditorWidget {
 		if(this.#editorWidget === undefined) throw new Error('Editor Widget not ready yet');
 		return this.#editorWidget;
+	}
+
+	setState(newState: UiState): void {
+		const oldState = this.state;
+		this.state = newState;
+		this.stateChanged.trigger({
+			oldState: oldState,
+			newState: newState
+		});
 	}
 
 	runAutomaticAction() {
