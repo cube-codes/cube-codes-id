@@ -1,6 +1,6 @@
 'use strict';
 
-importScripts('./dist/browser/cube-codes-ide-worker.js');
+importScripts('./dist/browser/browser.js');
 
 Object.assign(this, CCI);
 

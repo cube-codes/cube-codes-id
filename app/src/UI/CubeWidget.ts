@@ -93,17 +93,17 @@ export class CubeWidget {
 			const parent = $('<div />').appendTo('#cube-control');
 			const negFace = CubeFace.getByDimensionAndDirection(dimension, false);
 			const posFace = CubeFace.getByDimensionAndDirection(dimension, true);
-			addControl(parent, negFace.name.substr(0, 1), capitalize(negFace.name), (a: number, s?: object) => this.cubeApi.face(negFace, 1, a, s));
+			addControl(parent, negFace.name.substr(0, 1), capitalize(negFace.name), (a: number, s?: object) => this.cubeApi.layer(negFace, 1, a, s));
 			if(this.ui.initialAppState.cubeSpec.edgeLength >= 4) {
-				addControl(parent, `2${negFace.name.substr(0, 1)}`, `2. ${capitalize(negFace.name)}`, (a: number, s?: object) => this.cubeApi.face(negFace, 2, a, s));
+				addControl(parent, `2${negFace.name.substr(0, 1)}`, `2. ${capitalize(negFace.name)}`, (a: number, s?: object) => this.cubeApi.layer(negFace, 2, a, s));
 			}
 			if(this.ui.initialAppState.cubeSpec.edgeLength % 2 === 1) {
 				addControl(parent, centerNames[dimension.index].substr(0, 1), capitalize(centerNames[dimension.index]), (a: number, s?: object) => this.cubeApi.center(dimension, a, s));
 			}
 			if(this.ui.initialAppState.cubeSpec.edgeLength >= 4) {
-				addControl(parent, `2${posFace.name.substr(0, 1)}`, `2. ${capitalize(posFace.name)}`, (a: number, s?: object) => this.cubeApi.face(posFace, 2, a, s));
+				addControl(parent, `2${posFace.name.substr(0, 1)}`, `2. ${capitalize(posFace.name)}`, (a: number, s?: object) => this.cubeApi.layer(posFace, 2, a, s));
 			}
-			addControl(parent, posFace.name.substr(0, 1), capitalize(posFace.name), (a: number, s?: object) => this.cubeApi.face(posFace, 1, a, s));
+			addControl(parent, posFace.name.substr(0, 1), capitalize(posFace.name), (a: number, s?: object) => this.cubeApi.layer(posFace, 1, a, s));
 			addControl(parent, dimension.name.toLowerCase(), `${dimension.name} Rotation`, (a: number, s?: object) => this.cubeApi.rotate(dimension, a, s));
 		}
 
@@ -141,7 +141,7 @@ export class CubeWidget {
 		$('#cube-speed-normal').on('click', updateAnimationDuration(500));
 		$('#cube-speed-slow').on('click', updateAnimationDuration(1000));
 
-		$('#cube-view-reset').on('click', e => this.visualizer.resetCamera());
+		$('#cube-view-reset').on('click', e => this.visualizer.situation.camera.resetPerspective());
 
 	}
 

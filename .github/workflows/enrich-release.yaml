@@ -15,21 +15,51 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
+    - run: npm --no-git-tag-version version ${{ steps.get_release.outputs.tag_name }}
     - run: |
         cd app
         npm run ci-release
-        cd ..
-        cd worker
+        cd ../worker
         npm run ci-release
         cd ..
-        mkdir -p dist/web
-        cp --recursive --parents index.html app/index.html app/favicon.ico app/images app/styles app/dist/browser/cube-codes-ide-app.js worker/worker.js worker/dist/browser/cube-codes-ide-worker.js dist/web
-        zip -r dist/web.zip dist/web
+        cp --recursive --parents index.html app/index.html app/favicon.ico app/images app/styles app/dist/browser/browser.js worker/worker.js worker/dist/browser/browser.js dist/web
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: |
+        cd dist/web
+        zip -r ../web.zip .
     - uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: ./dist/web.zip
         asset_name: cube-codes-ide-${{ steps.get_release.outputs.tag_name }}-web.zip
+        asset_content_type: application/zip
+    - run: |
+        cd app/dist/docs
+        zip -r ../docs.zip .
+    - uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: ./app/dist/docs.zip
+        asset_name: cube-codes-ide-${{ steps.get_release.outputs.tag_name }}-app-docs.zip
+        asset_content_type: application/zip
+    - run: |
+        cd worker/dist/docs
+        zip -r ../docs.zip .
+    - uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: ./worker/dist/docs.zip
+        asset_name: cube-codes-ide-${{ steps.get_release.outputs.tag_name }}-worker-docs.zip
+        asset_content_type: application/zip
+    - run: |
+        cd worker/dist/editor-docs
+        zip -r ../editor-docs.zip .
+    - uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: ./worker/dist/editor-docs.zip
+        asset_name: cube-codes-ide-${{ steps.get_release.outputs.tag_name }}-editor-docs.zip
         asset_content_type: application/zip
     - uses: actions/checkout@v2
       with:

@@ -13,8 +13,9 @@ export * from '../../common/src/Messages/MessageListener';
 export * from '../../common/src/Cube Api/CubeApi';
 export * from '../../common/src/Cube Api/CubeletInspector';
 
-export * from './Execution/UiApi';
+export * from './Execution/EditorApi';
 export * from './Execution/ExecutionContext';
+export * from './Execution/UiApi';
 
 export * from './Worker/MessageQueueChangeDetector';
 export * from './Worker/ProgramWorker';

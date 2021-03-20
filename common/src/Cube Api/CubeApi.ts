@@ -20,7 +20,7 @@ export class CubeApi {
 		return await this.range(face, 1, sliceEnd, angle, source);
 	}
 
-	async face(face: CubeFace, sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
+	async layer(face: CubeFace, sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
 		return await this.range(face, sliceStart, sliceStart, angle, source);
 	}
 
@@ -94,30 +94,30 @@ export class CubeApi {
 		return await this.block(CubeFace.BACK, sliceEnd, angle, source);
 	}
 
-	// Specific Faces
+	// Specific Layers
 
 	async right(sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
-		return await this.face(CubeFace.RIGHT, sliceStart, angle, source);
+		return await this.layer(CubeFace.RIGHT, sliceStart, angle, source);
 	}
 
 	async up(sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
-		return await this.face(CubeFace.UP, sliceStart, angle, source);
+		return await this.layer(CubeFace.UP, sliceStart, angle, source);
 	}
 
 	async front(sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
-		return await this.face(CubeFace.FRONT, sliceStart, angle, source);
+		return await this.layer(CubeFace.FRONT, sliceStart, angle, source);
 	}
 
 	async left(sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
-		return await this.face(CubeFace.LEFT, sliceStart, angle, source);
+		return await this.layer(CubeFace.LEFT, sliceStart, angle, source);
 	}
 
 	async down(sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
-		return await this.face(CubeFace.DOWN, sliceStart, angle, source);
+		return await this.layer(CubeFace.DOWN, sliceStart, angle, source);
 	}
 
 	async back(sliceStart: number = 1, angle: number | CubeMoveAngle = CubeMoveAngle.C90, source?: object): Promise<CubeApi> {
-		return await this.face(CubeFace.BACK, sliceStart, angle, source);
+		return await this.layer(CubeFace.BACK, sliceStart, angle, source);
 	}
 
 	// Specific Centers
@@ -171,8 +171,9 @@ export class CubeApi {
 		return this;
 	}
 
-	async setSolved(source?: object): Promise<Cube> {
-		return await this.cube.setState(CubeState.fromSolved(this.cube.spec), source);
+	async setSolved(source?: object): Promise<CubeApi> {
+		await this.cube.setState(CubeState.fromSolved(this.cube.spec), source);
+		return this;
 	}
 
 	async shuffleByMove(movesLength: number, source?: object): Promise<CubeApi> {
@@ -180,7 +181,7 @@ export class CubeApi {
 		for (let moveIndex = 0; moveIndex < movesLength; moveIndex++) {
 			const face = CubeFace.getByIndex(Random.randomIntegerToInclusivly(5));
 			const sliceStart = Random.randomIntegerFromToInclusivly(1, Math.ceil(this.cube.spec.edgeLength / 2));
-			await this.face(face, sliceStart, CubeMoveAngle.C90, source);
+			await this.layer(face, sliceStart, CubeMoveAngle.C90, source);
 		}
 
 		return this;

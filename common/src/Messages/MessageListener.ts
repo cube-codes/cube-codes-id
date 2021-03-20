@@ -1,8 +1,8 @@
 import { MessageData } from "./MessageData";
 
 /**
- * Handler that receives {@link MessagetData} of a used {@link MessageChannel}
- * @typeParam M - {@link MessageData} of the {@link MessageChannel} that is listened for
+ * Handler that receives {@link MessageData} managed by a {@link MessageInbox}
+ * @typeParam M - {@link MessageData} that is listened for
  */
 export interface MessageListener<M extends MessageData<any>> {
 

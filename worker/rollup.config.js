@@ -5,7 +5,7 @@ export default [{
 	input: 'dist/package/worker/src/index.rollup.js',
 	output: {
 		name: 'CCI',
-		file: 'dist/browser/cube-codes-ide-worker.js',
+		file: 'dist/browser/browser.js',
 		format: 'iife',
 		sourcemap: 'inline'
 	},
