@@ -14,6 +14,7 @@ jobs:
         cd ../worker
         npm run ci-build
         cd ..
+        mkdir -p dist/web
         cp --recursive --parents index.html app/index.html app/favicon.ico app/images app/styles app/dist/browser/browser.js worker/worker.js worker/dist/browser/browser.js dist/web
     - uses: actions/upload-artifact@v2
       with:

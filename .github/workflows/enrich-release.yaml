@@ -22,6 +22,7 @@ jobs:
         cd ../worker
         npm run ci-release
         cd ..
+        mkdir -p dist/web
         cp --recursive --parents index.html app/index.html app/favicon.ico app/images app/styles app/dist/browser/browser.js worker/worker.js worker/dist/browser/browser.js dist/web
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
