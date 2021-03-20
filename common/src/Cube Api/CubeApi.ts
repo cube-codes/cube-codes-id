@@ -1,4 +1,4 @@
-import { Cube, CubeFace, CubeMoveAngle, CubeMove, Dimension, CubeMoveStringifier, Random, PermutationCubeState, PermutationCubeStateConverter } from "@cube-codes/cube-codes-model";
+import { Cube, CubeFace, CubeState, CubeMoveAngle, CubeMove, Dimension, CubeMoveStringifier, Random, PermutationCubeState, PermutationCubeStateConverter } from "@cube-codes/cube-codes-model";
 import { CubeletInspector } from "./CubeletInspector"
 
 export class CubeApi {
@@ -171,6 +171,10 @@ export class CubeApi {
 		return this;
 	}
 
+	async setSolved(source?: object): Promise<Cube> {
+		return await this.cube.setState(CubeState.fromSolved(this.cube.spec), source);
+	}
+
 	async shuffleByMove(movesLength: number, source?: object): Promise<CubeApi> {
 
 		for (let moveIndex = 0; moveIndex < movesLength; moveIndex++) {
@@ -189,7 +193,7 @@ export class CubeApi {
 		const permutationStateConverter = new PermutationCubeStateConverter(this.cube.spec);
 		const state = permutationStateConverter.toCubeState(permutationState);
 
-		await this.cube.setState(state);
+		await this.cube.setState(state, source);
 
 		return this;
 

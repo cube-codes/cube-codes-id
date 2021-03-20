@@ -2,4 +2,6 @@
 
 importScripts('./dist/browser/cube-codes-ide-worker.js');
 
-const programWorker = new CCI.ProgramWorker();
+Object.assign(this, CCI);
+
+const programWorker = new ProgramWorker();

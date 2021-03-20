@@ -1,6 +1,3 @@
-export * from '@cube-codes/cube-codes-model'
-export * from '@cube-codes/cube-codes-visualizer'
-
 export * from '../../common/src/Level';
 
 export * from '../../common/src/Message Bus/CubeStateSync';

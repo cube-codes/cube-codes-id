@@ -1,7 +1,7 @@
 import { Level } from "../../../common/src/Level";
 import { ProgramWorkerMessageBus } from "../Worker/ProgramWorkerMessageBus";
 
-export class ExecutionApi {
+export class UiApi {
 
 	constructor(private readonly messageBus: ProgramWorkerMessageBus) {}
 

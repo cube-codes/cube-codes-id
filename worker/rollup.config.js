@@ -2,7 +2,7 @@ import noderesolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 export default [{
-	input: 'dist/package/worker/src/index.js',
+	input: 'dist/package/worker/src/index.rollup.js',
 	output: {
 		name: 'CCI',
 		file: 'dist/browser/cube-codes-ide-worker.js',

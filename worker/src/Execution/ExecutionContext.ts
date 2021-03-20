@@ -1,7 +1,7 @@
 import { Cube, CubeSolutionCondition, CubeSpecification, CubeState } from "@cube-codes/cube-codes-model";
 import { WorkerFinishedSync } from "../../../common/src/Message Bus/WorkerFinishedSync";
 import { CubeApi } from "../../../common/src/Cube Api/CubeApi";
-import { ExecutionApi } from "./ExecutionApi";
+import { UiApi } from "./UiApi";
 import { ProgramWorkerMessageBus } from "../Worker/ProgramWorkerMessageBus";
 
 export class ExecutionContext {
@@ -22,17 +22,22 @@ export class ExecutionContext {
 		});
 	}
 
-	run(programCode: string): void {
+	async run(programCode: string): Promise<void> {
 
-		(self as any).API = new ExecutionApi(this.messageBus);
-		(self as any).CUBE = new CubeApi(this.cube);
+		const workerGlobal = self as any;
+
+		// Set main API entrypoints
+		workerGlobal.UI = new UiApi(this.messageBus);
+		workerGlobal.CUBE = new CubeApi(this.cube);
+		workerGlobal.CUBELETS = workerGlobal.CUBE.cubelets;
 
 		let workerFinishedSync: WorkerFinishedSync = {
 			type: 'WorkerFinishedSync',
 		}
 
 		try {
-			Function(programCode)();
+			new Function(`globalThis.program = async () => {${programCode}}`)();
+			await workerGlobal.program();
 		} catch(failure) {
 			workerFinishedSync = {
 				type: 'WorkerFinishedSync',

@@ -1,7 +1,7 @@
 import { html } from "./Html";
 import $ from "jquery";
 import { Ui } from "./Ui";
-import { CubeFace, CubeState, Dimension } from "@cube-codes/cube-codes-model";
+import { CubeFace, Dimension } from "@cube-codes/cube-codes-model";
 import { CubeVisualizer } from "@cube-codes/cube-codes-visualizer";
 import { UiState } from "./UiState";
 import { CubeApi } from "../../../common/src/Cube Api/CubeApi";
@@ -115,7 +115,7 @@ export class CubeWidget {
 			const cubeClone = this.ui.cube.clone();
 			const cubeCloneApi = new CubeApi(cubeClone);
 			await cubeCloneApi.shuffleByMove(50);
-			this.ui.cube.setState(cubeClone.getState());
+			await this.ui.cube.setState(cubeClone.getState());
 		});
 		$('#cube-shuffle-move-play').on('click', async e => {
 			this.ui.setState(UiState.EXECUTING);
@@ -128,7 +128,7 @@ export class CubeWidget {
 			await this.cubeApi.shuffleByExplosion();
 		});
 		$('#cube-reset').on('click', async e => {
-			await this.ui.cube.setState(CubeState.fromSolved(this.ui.cube.spec));
+			await this.cubeApi.setSolved();
 		});
 
 		const updateAnimationDuration = (d: number) => ((e: JQuery.ClickEvent<any, any, any, any>) => {

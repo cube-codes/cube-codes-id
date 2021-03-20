@@ -1,5 +1,3 @@
-export * from '@cube-codes/cube-codes-model'
-
 export * from '../../common/src/Level';
 
 export * from '../../common/src/Message Bus/CubeStateSync';
@@ -15,7 +13,7 @@ export * from '../../common/src/Messages/MessageListener';
 export * from '../../common/src/Cube Api/CubeApi';
 export * from '../../common/src/Cube Api/CubeletInspector';
 
-export * from './Execution/ExecutionApi';
+export * from './Execution/UiApi';
 export * from './Execution/ExecutionContext';
 
 export * from './Worker/MessageQueueChangeDetector';
