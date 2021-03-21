@@ -17,7 +17,8 @@ export class ExecutionContext {
 			messageBus.queueMessage({
 				type: 'CubeStateSync',
 				state: JSON.stringify(e.newState.export()),
-				move: e.move === undefined ? undefined : JSON.stringify(e.move.export())
+				move: e.move === undefined ? undefined : JSON.stringify(e.move.export()),
+				source: JSON.stringify(e.source ?? {})
 			});
 		});
 	}

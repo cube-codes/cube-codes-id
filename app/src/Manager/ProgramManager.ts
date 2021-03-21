@@ -42,14 +42,14 @@ export class ProgramManager {
 
 		this.workerContext = new ProgramWorkerContext();
 		this.workerContext.messageBus.cubeStateSync.on(async m => {
+			const source = JSON.parse(m.source);
+			if(animation === false) {
+				source.animation = false;
+			}
 			if (m.move) {
-				await this.ui.cube.move(CubeMove.import(this.ui.cube.spec, JSON.parse(m.move)), {
-					animation: animation
-				});
+				await this.ui.cube.move(CubeMove.import(this.ui.cube.spec, JSON.parse(m.move)), source);
 			} else {
-				await this.ui.cube.setState(CubeState.import(this.ui.cube.spec, JSON.parse(m.state)), {
-					animation: animation
-				});
+				await this.ui.cube.setState(CubeState.import(this.ui.cube.spec, JSON.parse(m.state)), source);
 			}
 			this.workerContext?.messageBus.send({ type: 'WorkerContinueSync' });
 		});
