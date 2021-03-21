@@ -1,0 +1,938 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Matrix | Cube Codes IDE - Editor</title>
+	<meta name="description" content="Documentation for Cube Codes IDE - Editor">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Cube Codes IDE - Editor</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">Cube Codes IDE - Editor</a>
+				</li>
+				<li>
+					<a href="matrix.html">Matrix</a>
+				</li>
+			</ul>
+			<h1>Class Matrix</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Matrix</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/exportable.html" class="tsd-signature-type" data-tsd-kind="Interface">Exportable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/identifiable.html" class="tsd-signature-type" data-tsd-kind="Interface">Identifiable</a></li>
+					<li><a href="../interfaces/equalizable.html" class="tsd-signature-type" data-tsd-kind="Interface">Equalizable</a><span class="tsd-signature-symbol">&lt;</span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/printable.html" class="tsd-signature-type" data-tsd-kind="Interface">Printable</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-external">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="matrix.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-external">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="matrix.html#components" class="tsd-kind-icon">components</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#identity" class="tsd-kind-icon">IDENTITY</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#zero" class="tsd-kind-icon">ZERO</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-external">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#add" class="tsd-kind-icon">add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#addat" class="tsd-kind-icon">add<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#componentequals" class="tsd-kind-icon">component<wbr>Equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#copycomponents" class="tsd-kind-icon">copy<wbr>Components</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#ensureinteger" class="tsd-kind-icon">ensure<wbr>Integer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#equals" class="tsd-kind-icon">equals</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#export" class="tsd-kind-icon">export</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#getcomponent" class="tsd-kind-icon">get<wbr>Component</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#getflatcomponents" class="tsd-kind-icon">get<wbr>Flat<wbr>Components</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#inverse" class="tsd-kind-icon">inverse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#multiply" class="tsd-kind-icon">multiply</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#rotate" class="tsd-kind-icon">rotate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#scalardivide" class="tsd-kind-icon">scalar<wbr>Divide</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#scalarmultiply" class="tsd-kind-icon">scalar<wbr>Multiply</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#subtract" class="tsd-kind-icon">subtract</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#subtractat" class="tsd-kind-icon">subtract<wbr>At</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#transpose" class="tsd-kind-icon">transpose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#vectormultiply" class="tsd-kind-icon">vector<wbr>Multiply</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="matrix.html#withcomponent" class="tsd-kind-icon">with<wbr>Component</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#forbasechange" class="tsd-kind-icon">for<wbr>Base<wbr>Change</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#fromcomponent" class="tsd-kind-icon">from<wbr>Component</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#fromrotation" class="tsd-kind-icon">from<wbr>Rotation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#fromsamecomponents" class="tsd-kind-icon">from<wbr>Same<wbr>Components</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="matrix.html#import" class="tsd-kind-icon">import</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-external">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Matrix<span class="tsd-signature-symbol">(</span>components<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:13</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>components: <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-external">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="components" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> components</h3>
+					<div class="tsd-signature tsd-kind-icon">components<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:13</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Outer array is a list of rows, inner arrays are the columns/entries of each row</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="identity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> <span class="tsd-flag ts-flagStatic">Static</span> IDENTITY</h3>
+					<div class="tsd-signature tsd-kind-icon">IDENTITY<span class="tsd-signature-symbol">:</span> <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:9</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="zero" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> <span class="tsd-flag ts-flagStatic">Static</span> ZERO</h3>
+					<div class="tsd-signature tsd-kind-icon">ZERO<span class="tsd-signature-symbol">:</span> <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:8</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-external">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>summand2<span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:32</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>summand2: <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="addat" class="tsd-anchor"></a>
+					<h3>add<wbr>At</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>At<span class="tsd-signature-symbol">(</span>rowDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, columnDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, summand2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:33</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>rowDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>columnDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>summand2: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="componentequals" class="tsd-anchor"></a>
+					<h3>component<wbr>Equals</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">component<wbr>Equals<span class="tsd-signature-symbol">(</span>rowDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, columnDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, otherComponent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:28</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>rowDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>columnDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>otherComponent: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="copycomponents" class="tsd-anchor"></a>
+					<h3>copy<wbr>Components</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">copy<wbr>Components<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:25</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="ensureinteger" class="tsd-anchor"></a>
+					<h3>ensure<wbr>Integer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">ensure<wbr>Integer<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:24</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="equals" class="tsd-anchor"></a>
+					<h3>equals</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">equals<span class="tsd-signature-symbol">(</span>other<span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/equalizable.html">Equalizable</a>.<a href="../interfaces/equalizable.html#equals">equals</a></p>
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:22</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>other: <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="export" class="tsd-anchor"></a>
+					<h3>export</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">export<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/exportable.html">Exportable</a>.<a href="../interfaces/exportable.html#export">export</a></p>
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:20</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="getcomponent" class="tsd-anchor"></a>
+					<h3>get<wbr>Component</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Component<span class="tsd-signature-symbol">(</span>rowDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, columnDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:27</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>rowDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>columnDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="getflatcomponents" class="tsd-anchor"></a>
+					<h3>get<wbr>Flat<wbr>Components</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Flat<wbr>Components<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:26</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/identifiable.html">Identifiable</a>.<a href="../interfaces/identifiable.html#id">id</a></p>
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:21</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="inverse" class="tsd-anchor"></a>
+					<h3>inverse</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">inverse<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:31</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="multiply" class="tsd-anchor"></a>
+					<h3>multiply</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">multiply<span class="tsd-signature-symbol">(</span>factor2<span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:38</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>factor2: <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="rotate" class="tsd-anchor"></a>
+					<h3>rotate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">rotate<span class="tsd-signature-symbol">(</span>axis<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:40</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>axis: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="scalardivide" class="tsd-anchor"></a>
+					<h3>scalar<wbr>Divide</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">scalar<wbr>Divide<span class="tsd-signature-symbol">(</span>divisor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:37</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>divisor: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="scalarmultiply" class="tsd-anchor"></a>
+					<h3>scalar<wbr>Multiply</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">scalar<wbr>Multiply<span class="tsd-signature-symbol">(</span>factor2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:36</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>factor2: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="subtract" class="tsd-anchor"></a>
+					<h3>subtract</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">subtract<span class="tsd-signature-symbol">(</span>subtrahend<span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:34</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>subtrahend: <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="subtractat" class="tsd-anchor"></a>
+					<h3>subtract<wbr>At</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">subtract<wbr>At<span class="tsd-signature-symbol">(</span>rowDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, columnDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, subtrahend<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:35</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>rowDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>columnDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>subtrahend: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="tostring" class="tsd-anchor"></a>
+					<h3>to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/printable.html">Printable</a>.<a href="../interfaces/printable.html#tostring">toString</a></p>
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:23</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="transpose" class="tsd-anchor"></a>
+					<h3>transpose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">transpose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:30</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="vectormultiply" class="tsd-anchor"></a>
+					<h3>vector<wbr>Multiply</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">vector<wbr>Multiply<span class="tsd-signature-symbol">(</span>factor2<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:39</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>factor2: <a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a name="withcomponent" class="tsd-anchor"></a>
+					<h3>with<wbr>Component</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Component<span class="tsd-signature-symbol">(</span>rowDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, columnDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, newComponent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:29</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>rowDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>columnDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>newComponent: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="forbasechange" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> for<wbr>Base<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Base<wbr>Change<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a><span class="tsd-signature-symbol">[]</span>, to<span class="tsd-signature-symbol">: </span><a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:15</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>to: <a href="vector.html" class="tsd-signature-type" data-tsd-kind="Class">Vector</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="fromcomponent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Component</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Component<span class="tsd-signature-symbol">(</span>rowDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, columnDimension<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a>, component<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:18</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>rowDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>columnDimension: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+								<li>
+									<h5>component: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="fromrotation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Rotation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Rotation<span class="tsd-signature-symbol">(</span>axis<span class="tsd-signature-symbol">: </span><a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:16</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>axis: <a href="dimension.html" class="tsd-signature-type" data-tsd-kind="Class">Dimension</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="fromsamecomponents" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Same<wbr>Components</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Same<wbr>Components<span class="tsd-signature-symbol">(</span>allComponents<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:17</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>allComponents: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="import" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> import</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">import<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Linear Algebra/Matrix.d.ts:19</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">readonly number[]</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="matrix.html" class="tsd-signature-type" data-tsd-kind="Class">Matrix</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-is-external">
+						<a href="matrix.html" class="tsd-kind-icon">Matrix</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#components" class="tsd-kind-icon">components</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#identity" class="tsd-kind-icon">IDENTITY</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#zero" class="tsd-kind-icon">ZERO</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#add" class="tsd-kind-icon">add</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#addat" class="tsd-kind-icon">add<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#componentequals" class="tsd-kind-icon">component<wbr>Equals</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#copycomponents" class="tsd-kind-icon">copy<wbr>Components</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#ensureinteger" class="tsd-kind-icon">ensure<wbr>Integer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#equals" class="tsd-kind-icon">equals</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#export" class="tsd-kind-icon">export</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#getcomponent" class="tsd-kind-icon">get<wbr>Component</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#getflatcomponents" class="tsd-kind-icon">get<wbr>Flat<wbr>Components</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#inverse" class="tsd-kind-icon">inverse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#multiply" class="tsd-kind-icon">multiply</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#rotate" class="tsd-kind-icon">rotate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#scalardivide" class="tsd-kind-icon">scalar<wbr>Divide</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#scalarmultiply" class="tsd-kind-icon">scalar<wbr>Multiply</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#subtract" class="tsd-kind-icon">subtract</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#subtractat" class="tsd-kind-icon">subtract<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#transpose" class="tsd-kind-icon">transpose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#vectormultiply" class="tsd-kind-icon">vector<wbr>Multiply</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+								<a href="matrix.html#withcomponent" class="tsd-kind-icon">with<wbr>Component</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#forbasechange" class="tsd-kind-icon">for<wbr>Base<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#fromcomponent" class="tsd-kind-icon">from<wbr>Component</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#fromrotation" class="tsd-kind-icon">from<wbr>Rotation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#fromsamecomponents" class="tsd-kind-icon">from<wbr>Same<wbr>Components</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="matrix.html#import" class="tsd-kind-icon">import</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

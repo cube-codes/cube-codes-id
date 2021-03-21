@@ -1,0 +1,335 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cube Codes IDE - Editor</title>
+	<meta name="description" content="Documentation for Cube Codes IDE - Editor">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">Cube Codes IDE - Editor</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>Cube Codes IDE - Editor</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#cube-codes-ide---editor" id="cube-codes-ide---editor" style="color: inherit; text-decoration: none;">
+					<h1>Cube Codes IDE - Editor</h1>
+				</a>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>Within the editor of the IDE the interface <a href="interfaces/editorapi.html">EditorApi</a> is imported to the global namespace. This means in the editor you can simply write:</p>
+				<pre><code class="language-javascript"><span style="color: #008000">// Reading from the CubeApi asking whether the cube is solved</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">s</span><span style="color: #000000"> = </span><span style="color: #0070C1">CUBE</span><span style="color: #000000">.</span><span style="color: #795E26">isSolved</span><span style="color: #000000">();</span>
+
+<span style="color: #008000">// Writing to the CubeApi turning the cube&#039;s front face</span>
+<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #0070C1">CUBE</span><span style="color: #000000">.</span><span style="color: #795E26">front</span><span style="color: #000000">();</span>
+
+<span style="color: #008000">// Digging into the cubelets via the CubeletInspector to find</span>
+<span style="color: #008000">// the current location of the cubelet that should be at the front-right edge</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">l</span><span style="color: #000000"> = </span><span style="color: #0070C1">CUBELETS</span><span style="color: #000000">.</span><span style="color: #795E26">findSolvedInPart</span><span style="color: #000000">(</span><span style="color: #001080">CubePart</span><span style="color: #000000">.</span><span style="color: #0070C1">FR</span><span style="color: #000000">).</span><span style="color: #001080">currentLocation</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// Interacting with the UI to send out a log message</span>
+<span style="color: #0070C1">UI</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Hi, I am here&#039;</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#asynchronous-cube-changes" id="asynchronous-cube-changes" style="color: inherit; text-decoration: none;">
+					<h2>Asynchronous cube changes</h2>
+				</a>
+				<p>All functions that change the cube are asynchronous. This means that they do not execute and then return to the parent code, but they return immediately a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" class="external">Promise</a> and execute the code parallel to your parent code. If you want to wait until the changes to the cube are done (which you will want almost always) before your parent code should execute, you must prefix the function invocation with the keyword <code>await</code>.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-is-external">
+						<a href="enums/cubemoveangle.html" class="tsd-kind-icon">Cube<wbr>Move<wbr>Angle</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-is-external">
+						<a href="enums/cubesolutionconditiontype.html" class="tsd-kind-icon">Cube<wbr>Solution<wbr>Condition<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/level.html" class="tsd-kind-icon">Level</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/arrays.html" class="tsd-kind-icon">Arrays</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/color3orbit.html" class="tsd-kind-icon">Color3<wbr>Orbit</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/color3orbitexport.html" class="tsd-kind-icon">Color3<wbr>Orbit<wbr>Export</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/colorcubestatestringifier.html" class="tsd-kind-icon">Color<wbr>Cube<wbr>State<wbr>Stringifier</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cube.html" class="tsd-kind-icon">Cube</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/cubeapi.html" class="tsd-kind-icon">Cube<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubeface.html" class="tsd-kind-icon">Cube<wbr>Face</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubemove.html" class="tsd-kind-icon">Cube<wbr>Move</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubemoveexport.html" class="tsd-kind-icon">Cube<wbr>Move<wbr>Export</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubemovestringifier.html" class="tsd-kind-icon">Cube<wbr>Move<wbr>Stringifier</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubepart.html" class="tsd-kind-icon">Cube<wbr>Part</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubepartexport.html" class="tsd-kind-icon">Cube<wbr>Part<wbr>Export</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubeparttype.html" class="tsd-kind-icon">Cube<wbr>Part<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubesolutioncondition.html" class="tsd-kind-icon">Cube<wbr>Solution<wbr>Condition</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubespecification.html" class="tsd-kind-icon">Cube<wbr>Specification</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubestate.html" class="tsd-kind-icon">Cube<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubestateexport.html" class="tsd-kind-icon">Cube<wbr>State<wbr>Export</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubestatestringifier.html" class="tsd-kind-icon">Cube<wbr>State<wbr>Stringifier</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubelet.html" class="tsd-kind-icon">Cubelet</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/cubeletinspector.html" class="tsd-kind-icon">Cubelet<wbr>Inspector</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubeletlocation.html" class="tsd-kind-icon">Cubelet<wbr>Location</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubeletorientation.html" class="tsd-kind-icon">Cubelet<wbr>Orientation</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubeletstate.html" class="tsd-kind-icon">Cubelet<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/cubeletstateexport.html" class="tsd-kind-icon">Cubelet<wbr>State<wbr>Export</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/dimension.html" class="tsd-kind-icon">Dimension</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter tsd-is-external">
+						<a href="classes/event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/executioncontext.html" class="tsd-kind-icon">Execution<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/matrix.html" class="tsd-kind-icon">Matrix</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/messagebufferchangedetector.html" class="tsd-kind-icon">Message<wbr>Buffer<wbr>Change<wbr>Detector</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/messageinbox.html" class="tsd-kind-icon">Message<wbr>Inbox</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/permutationcubestate.html" class="tsd-kind-icon">Permutation<wbr>Cube<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/permutationcubestateconverter.html" class="tsd-kind-icon">Permutation<wbr>Cube<wbr>State<wbr>Converter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/permutationcubestateexport.html" class="tsd-kind-icon">Permutation<wbr>Cube<wbr>State<wbr>Export</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/permutations.html" class="tsd-kind-icon">Permutations</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/programworker.html" class="tsd-kind-icon">Program<wbr>Worker</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/programworkermessagebus.html" class="tsd-kind-icon">Program<wbr>Worker<wbr>Message<wbr>Bus</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/random.html" class="tsd-kind-icon">Random</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/uiapi.html" class="tsd-kind-icon">Ui<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/vector.html" class="tsd-kind-icon">Vector</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/cubestatechanged.html" class="tsd-kind-icon">Cube<wbr>State<wbr>Changed</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/cubestatesync.html" class="tsd-kind-icon">Cube<wbr>State<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/editorapi.html" class="tsd-kind-icon">Editor<wbr>Api</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="interfaces/equalizable.html" class="tsd-kind-icon">Equalizable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/eventdata.html" class="tsd-kind-icon">Event<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="interfaces/eventlistener.html" class="tsd-kind-icon">Event<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/eventsource.html" class="tsd-kind-icon">Event<wbr>Source</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="interfaces/exportable.html" class="tsd-kind-icon">Exportable</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/identifiable.html" class="tsd-kind-icon">Identifiable</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/logsync.html" class="tsd-kind-icon">Log<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/messagedata.html" class="tsd-kind-icon">Message<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/messagelistener.html" class="tsd-kind-icon">Message<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/overlaysync.html" class="tsd-kind-icon">Overlay<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/printable.html" class="tsd-kind-icon">Printable</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/programworkerglobal.html" class="tsd-kind-icon">Program<wbr>Worker<wbr>Global</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/readonlycubelet.html" class="tsd-kind-icon">Readonly<wbr>Cubelet</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/uisync.html" class="tsd-kind-icon">Ui<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/workercontinuesync.html" class="tsd-kind-icon">Worker<wbr>Continue<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/workerfinishedsync.html" class="tsd-kind-icon">Worker<wbr>Finished<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/workerstartsync.html" class="tsd-kind-icon">Worker<wbr>Start<wbr>Sync</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#programworkeroutboundmessage" class="tsd-kind-icon">Program<wbr>Worker<wbr>Outbound<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#cubestatesynctype" class="tsd-kind-icon">Cube<wbr>State<wbr>Sync<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#uisynctype" class="tsd-kind-icon">Ui<wbr>Sync<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#workercontinuesynctype" class="tsd-kind-icon">Worker<wbr>Continue<wbr>Sync<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#workerfinishedsynctype" class="tsd-kind-icon">Worker<wbr>Finished<wbr>Sync<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#workerstartsynctype" class="tsd-kind-icon">Worker<wbr>Start<wbr>Sync<wbr>Type</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
