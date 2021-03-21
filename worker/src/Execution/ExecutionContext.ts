@@ -42,7 +42,10 @@ export class ExecutionContext {
 		} catch(failure) {
 			workerFinishedSync = {
 				type: 'WorkerFinishedSync',
-				failure: failure
+				failure: {
+					message: failure.message,
+					stack: failure.stack
+				}
 			}
 		}
 		

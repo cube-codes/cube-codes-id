@@ -68,6 +68,10 @@ export class EditorWidget {
 				title="Show search bar"><img src="images/bootstrap-icons/search.svg" /></button>
 		</div>
 		<div class="btn-group btn-group-sm ml-auto">
+			<button type="button" id="editor-docs" class="btn btn-secondary" title="Editor Documentation"><img
+					src="images/bootstrap-icons/question-square.svg" /></button>
+		</div>
+		<div class="btn-group btn-group-sm ml-2">
 			<button type="button" id="editor-show-invisibles" class="btn btn-secondary"
 				data-toggle="button" title="Show/Hide invisible characters"><img
 					src="images/bootstrap-icons/paragraph.svg" /></button>
@@ -113,6 +117,7 @@ export class EditorWidget {
 		$('#editor-undo'           ).on('click', e => this.ace.undo());
 		$('#editor-redo'           ).on('click', e => this.ace.redo());
 		$('#editor-search'         ).on('click', e => new Search(this.ace, false));
+		$('#editor-docs'           ).on('click', e => window.open('../editor-docs/', '_BLANK'));
 		$('#editor-show-invisibles').on('click', e => this.ace.setOption('showInvisibles', !this.ace.getOption('showInvisibles')));
 		$('#editor-font-increase'  ).on('click', e => updateFontSize(true));
 		$('#editor-font-decrease'  ).on('click', e => updateFontSize(false));
