@@ -1,4 +1,4 @@
-import { Cube, CubeFace, CubeState, CubeMoveAngle, CubeMove, Dimension, CubeMoveStringifier, Random, PermutationCubeState, PermutationCubeStateConverter, EventSource } from "@cube-codes/cube-codes-model";
+import { Cube, CubeFace, CubeState, CubeMoveAngle, CubeMove, Dimension, CubeMoveStringifier, Random, PermutationCubeState, PermutationCubeStateConverter, EventSource, CubeSolutionCondition, CubeSpecification } from "@cube-codes/cube-codes-model";
 import { CubeletInspector } from "./CubeletInspector"
 
 export class CubeApi {
@@ -7,6 +7,29 @@ export class CubeApi {
 
 	get cubelets(): CubeletInspector {
 		return new CubeletInspector(this.cube.cubelets);
+	}
+
+	get spec(): CubeSpecification {
+		return this.cube.spec;
+	}
+
+	get solutionCondition(): CubeSolutionCondition {
+		return this.cube.solutionCondition;
+	}
+
+	isSolved(): boolean {
+		return this.cube.isSolved();
+	}
+
+	// State
+
+	getState(): CubeState {
+		return this.cube.getState();
+	}
+
+	async setState(newState: CubeState, source?: EventSource): Promise<CubeApi> {
+		await this.cube.setState(newState, source);
+		return this;
 	}
 
 	// Generic Moves
