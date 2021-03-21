@@ -22,7 +22,7 @@
 	},
 	"dependencies": {
 		"@cube-codes/cube-codes-model": "0.0.34",
-		"@cube-codes/cube-codes-visualizer": "0.0.11",
+		"@cube-codes/cube-codes-visualizer": "0.0.12",
 		"@types/ace": "0.0.45",
 		"@types/bootstrap": "^5.0.9",
 		"@types/jquery": "^3.5.5",
