@@ -16,9 +16,7 @@ export class ProgramWorker {
 			
 			const executionContext = new ExecutionContext(this.messageBus, cubeSpec, cubeSolutionCondition, cubeState);
 			executionContext.run(m.programCode);
-		});
-		this.messageBus.workerContinueSync.on(() => {
-			this.messageBus.flushQueue();
+			
 		});
 	}
 

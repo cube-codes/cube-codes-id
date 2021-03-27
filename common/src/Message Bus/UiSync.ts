@@ -10,6 +10,7 @@ export interface UiSync extends MessageData<typeof UiSyncType> {
 export interface LogSync {
 	readonly message: string
 	readonly level: Level
+	readonly withDate: boolean
 }
 
 export interface OverlaySync {

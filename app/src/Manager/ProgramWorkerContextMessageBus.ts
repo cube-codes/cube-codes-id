@@ -2,8 +2,9 @@ import { CubeStateSync, CubeStateSyncType } from "../../../common/src/Message Bu
 import { UiSync, UiSyncType } from "../../../common/src/Message Bus/UiSync";
 import { WorkerFinishedSync, WorkerFinishedSyncType } from "../../../common/src/Message Bus/WorkerFinishedSync";
 import { MessageInbox } from "../../../common/src/Messages/MessageInbox";
-import { WorkerContinueSync } from "../../../common/src/Message Bus/WorkerContinueSync";
+import { WorkerCallbackSync } from "../../../common/src/Message Bus/WorkerCallbackSync";
 import { WorkerStartSync } from "../../../common/src/Message Bus/WorkerStartSync";
+import { MessageIdGenerator } from "../../../common/src/Messages/MessageIdGenerator";
 
 export class ProgramWorkerContextMessageBus {
 
@@ -17,9 +18,9 @@ export class ProgramWorkerContextMessageBus {
 
 	constructor(worker: Worker) {
 
-		this.workerFinishedSync = new MessageInbox<WorkerFinishedSync>(WorkerFinishedSyncType);
-		this.cubeStateSync = new MessageInbox<CubeStateSync>(CubeStateSyncType);
-		this.uiSync = new MessageInbox<UiSync>(UiSyncType);
+		this.workerFinishedSync = new MessageInbox(WorkerFinishedSyncType);
+		this.cubeStateSync = new MessageInbox(CubeStateSyncType);
+		this.uiSync = new MessageInbox(UiSyncType);
 		
 		this.worker = worker;
 		this.worker.onmessage = m => {
@@ -31,13 +32,14 @@ export class ProgramWorkerContextMessageBus {
 		this.worker.onerror = crash => {
 			this.workerFinishedSync.tryRelay({
 				type: WorkerFinishedSyncType,
+				id: MessageIdGenerator.generate(),
 				crash: crash
 			});
 		};
 
 	}
 
-	send(messageData: WorkerStartSync | WorkerContinueSync): void {
+	send(messageData: WorkerStartSync | WorkerCallbackSync): void {
 		this.worker.postMessage(messageData);
 	}
 

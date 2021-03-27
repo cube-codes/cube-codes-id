@@ -4,6 +4,9 @@ import { ProgramManagerStateChanged } from "./ProgramManagerStateChanged";
 import { CubeMove, CubeState, Event } from "@cube-codes/cube-codes-model";
 import { Level } from "../../../common/src/Level";
 import { Ui } from "../UI/Ui";
+import { WorkerCallbackSyncType } from "../../../common/src/Message Bus/WorkerCallbackSync";
+import { WorkerStartSyncType } from "../../../common/src/Message Bus/WorkerStartSync";
+import { MessageIdGenerator } from "../../../common/src/Messages/MessageIdGenerator";
 
 export class ProgramManager {
 
@@ -39,6 +42,8 @@ export class ProgramManager {
 		if (this.state !== ProgramManagerState.IDLE) throw new Error(`Invalid state: ${this.state}`);
 
 		this.setState(ProgramManagerState.STARTING);
+		this.ui.editorWidget.log('Program starting ...', Level.INFO, true);
+		this.ui.overlay('Program starting ...', '', Level.INFO, 5000);
 
 		this.workerContext = new ProgramWorkerContext();
 		this.workerContext.messageBus.cubeStateSync.on(async m => {
@@ -51,12 +56,20 @@ export class ProgramManager {
 			} else {
 				await this.ui.cube.setState(CubeState.import(this.ui.cube.spec, JSON.parse(m.state)), source);
 			}
-			this.workerContext?.messageBus.send({ type: 'WorkerContinueSync' });
+			this.workerContext?.messageBus.send({
+				type: WorkerCallbackSyncType,
+				id: MessageIdGenerator.generate(),
+				originalId: m.id
+			});
 		});
 		this.workerContext.messageBus.uiSync.on(m => {
-			m.logs.forEach(logSync => this.ui.editorWidget.log(logSync.message, logSync.level));
+			m.logs.forEach(logSync => this.ui.editorWidget.log(logSync.message, logSync.level, logSync.withDate));
 			m.overlays.forEach(overlaySync => this.ui.overlay(`Program: ${overlaySync.title}`, overlaySync.message, overlaySync.level, overlaySync.duration));
-			this.workerContext?.messageBus.send({ type: 'WorkerContinueSync' });
+			this.workerContext?.messageBus.send({
+				type: WorkerCallbackSyncType,
+				id: MessageIdGenerator.generate(),
+				originalId: m.id
+			});
 		});
 		this.workerContext.messageBus.workerFinishedSync.on(m => {
 			this.setState(ProgramManagerState.IDLE);
@@ -73,12 +86,16 @@ export class ProgramManager {
 			}
 		});
 
-		this.workerContext?.messageBus.send({ type: 'WorkerStartSync', programCode: programCode, cubeSpec: JSON.stringify(this.ui.cube.spec.export()), cubeSolutionCondition: JSON.stringify(this.ui.cube.solutionCondition.export()), cubeState: JSON.stringify(this.ui.cube.getState().export()) });
-		this.workerContext?.messageBus.send({ type: 'WorkerContinueSync' });
+		this.workerContext?.messageBus.send({
+			type: WorkerStartSyncType,
+			id: MessageIdGenerator.generate(),
+			programCode: programCode,
+			cubeSpec: JSON.stringify(this.ui.cube.spec.export()),
+			cubeSolutionCondition: JSON.stringify(this.ui.cube.solutionCondition.export()),
+			cubeState: JSON.stringify(this.ui.cube.getState().export())
+		});
 
 		this.setState(ProgramManagerState.RUNNING);
-		this.ui.editorWidget.log('Program started', Level.INFO, true);
-		this.ui.overlay('Program started', '', Level.INFO, 5000);
 
 	}
 

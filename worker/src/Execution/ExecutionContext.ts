@@ -1,8 +1,16 @@
 import { Cube, CubeSolutionCondition, CubeSpecification, CubeState } from "@cube-codes/cube-codes-model";
-import { WorkerFinishedSync } from "../../../common/src/Message Bus/WorkerFinishedSync";
+import { WorkerFinishedSyncType } from "../../../common/src/Message Bus/WorkerFinishedSync";
 import { CubeApi } from "../../../common/src/Cube Api/CubeApi";
 import { UiApi } from "./UiApi";
 import { ProgramWorkerMessageBus } from "../Worker/ProgramWorkerMessageBus";
+import { EditorApiBuilder } from "./EditorApiBuilder";
+import { CubeStateSyncType } from "../../../common/src/Message Bus/CubeStateSync";
+import { MessageIdGenerator } from "../../../common/src/Messages/MessageIdGenerator";
+import { EditorApi } from "./EditorApi";
+
+export interface ExecutionContextApi extends EditorApi {
+	program(): Promise<void>
+}
 
 export class ExecutionContext {
 
@@ -13,9 +21,10 @@ export class ExecutionContext {
 	constructor(messageBus: ProgramWorkerMessageBus, cubeSpec: CubeSpecification, cubeSolutionCondition: CubeSolutionCondition, cubeState: CubeState) {
 		this.messageBus = messageBus;
 		this.cube = new Cube(cubeSpec, cubeSolutionCondition, cubeState);
-		this.cube.stateChanged.on(e => {
-			messageBus.queueMessage({
-				type: 'CubeStateSync',
+		this.cube.stateChanged.on(async e => {
+			await messageBus.sendMessage({
+				type: CubeStateSyncType,
+				id: MessageIdGenerator.generate(),
 				state: JSON.stringify(e.newState.export()),
 				move: e.move === undefined ? undefined : JSON.stringify(e.move.export()),
 				source: JSON.stringify(e.source ?? {})
@@ -25,31 +34,40 @@ export class ExecutionContext {
 
 	async run(programCode: string): Promise<void> {
 
-		const workerGlobal = self as any;
-
-		// Set main API entrypoints
-		workerGlobal.UI = new UiApi(this.messageBus);
-		workerGlobal.CUBE = new CubeApi(this.cube);
-		workerGlobal.CUBELETS = workerGlobal.CUBE.cubelets;
-
-		let workerFinishedSync: WorkerFinishedSync = {
-			type: 'WorkerFinishedSync',
-		}
+		EditorApiBuilder.set({
+			UI: new UiApi(this.messageBus),
+			CUBE: new CubeApi(this.cube),
+			CUBELETS: new CubeApi(this.cube).cubelets
+		});
 
 		try {
-			new Function(`globalThis.program = async () => {${programCode}}`)();
-			await workerGlobal.program();
+
+			const global = self as unknown as (WorkerGlobalScope & ExecutionContextApi)
+			
+			new Function(`self.program = async () => {${programCode}}`)();
+
+			await global.UI.logInfo('Program running ...', true);
+			await global.UI.overlayInfo('Running', '', 5000);
+			
+			await global.program();
+			
+			this.messageBus.sendMessage({
+				type: WorkerFinishedSyncType,
+				id: MessageIdGenerator.generate()
+			});
+
 		} catch(failure) {
-			workerFinishedSync = {
-				type: 'WorkerFinishedSync',
+			this.messageBus.sendMessage({
+				type: WorkerFinishedSyncType,
+				id: MessageIdGenerator.generate(),
 				failure: {
 					message: failure.message,
 					stack: failure.stack
 				}
-			}
+			});
+		} finally {
+			self.close();
 		}
-		
-		this.messageBus.queueMessage(workerFinishedSync);
 
 	}
 	

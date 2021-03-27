@@ -4,10 +4,10 @@ import { UiApi } from "./UiApi"
 
 export interface EditorApi {
 
-	UI: UiApi
+	readonly UI: UiApi
 
-	CUBE: CubeApi
+	readonly CUBE: CubeApi
 
-	CUBELETS: CubeletInspector
+	readonly CUBELETS: CubeletInspector
 
 }

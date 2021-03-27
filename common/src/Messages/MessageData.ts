@@ -4,5 +4,7 @@
 export interface MessageData<MessageType> {
 
 	readonly type: MessageType
+
+	readonly id: string
  
 }

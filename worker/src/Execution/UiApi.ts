@@ -1,40 +1,45 @@
 import { Level } from "../../../common/src/Level";
+import { UiSyncType } from "../../../common/src/Message Bus/UiSync";
+import { MessageIdGenerator } from "../../../common/src/Messages/MessageIdGenerator";
 import { ProgramWorkerMessageBus } from "../Worker/ProgramWorkerMessageBus";
 
 export class UiApi {
 
 	constructor(private readonly messageBus: ProgramWorkerMessageBus) {}
 
-	log(message: string, level: Level = Level.INFO): void {
-		this.messageBus.queueMessage({
-			type: 'UiSync',
+	async log(message: string, level: Level = Level.INFO, withDate: boolean = false): Promise<void> {
+		await this.messageBus.sendMessage({
+			type: UiSyncType,
+			id: MessageIdGenerator.generate(),
 			logs: [{
 				message: message,
-				level: level
+				level: level,
+				withDate: withDate
 			}],
 			overlays: []
 		});
 	}
 
-	logInfo(message: string): void {
-		this.log(message, Level.INFO);
+	async logInfo(message: string, withDate: boolean = false): Promise<void> {
+		await this.log(message, Level.INFO, withDate);
 	}
 
-	logSuccess(message: string): void {
-		this.log(message, Level.SUCCESS);
+	async logSuccess(message: string, withDate: boolean = false): Promise<void> {
+		await this.log(message, Level.SUCCESS, withDate);
 	}
 
-	logWarning(message: string): void {
-		this.log(message, Level.WARNING);
+	async logWarning(message: string, withDate: boolean = false): Promise<void> {
+		await this.log(message, Level.WARNING, withDate);
 	}
 
-	logError(message: string): void {
-		this.log(message, Level.ERROR);
+	async logError(message: string, withDate: boolean = false): Promise<void> {
+		await this.log(message, Level.ERROR, withDate);
 	}
 
-	overlay(title: string, message: string = '', level: Level = Level.INFO, duration: number = 3000): void {
-		this.messageBus.queueMessage({
-			type: 'UiSync',
+	async overlay(title: string, message: string = '', level: Level = Level.INFO, duration: number = 3000): Promise<void> {
+		await this.messageBus.sendMessage({
+			type: UiSyncType,
+			id: MessageIdGenerator.generate(),
 			logs: [],
 			overlays: [{
 				title: title,
@@ -45,20 +50,20 @@ export class UiApi {
 		});
 	}
 
-	overlayInfo(title: string, message: string = '', duration: number = 3000): void {
-		this.overlay(title, message, Level.INFO, duration);
+	async overlayInfo(title: string, message: string = '', duration: number = 3000): Promise<void> {
+		await this.overlay(title, message, Level.INFO, duration);
 	}
 
-	overlaySuccess(title: string, message: string = '', duration: number = 3000): void {
-		this.overlay(title, message, Level.SUCCESS, duration);
+	async overlaySuccess(title: string, message: string = '', duration: number = 3000): Promise<void> {
+		await this.overlay(title, message, Level.SUCCESS, duration);
 	}
 
-	overlayWarning(title: string, message: string = '', duration: number = 3000): void {
-		this.overlay(title, message, Level.WARNING, duration);
+	async overlayWarning(title: string, message: string = '', duration: number = 3000): Promise<void> {
+		await this.overlay(title, message, Level.WARNING, duration);
 	}
 
-	overlayError(title: string, message: string = '', duration: number = 3000): void {
-		this.overlay(title, message, Level.ERROR, duration);
+	async overlayError(title: string, message: string = '', duration: number = 3000): Promise<void> {
+		await this.overlay(title, message, Level.ERROR, duration);
 	}
 
 	async sleep(seconds: number): Promise<void> {
