@@ -30,6 +30,7 @@ export class ProgramWorkerMessageBus {
 		this.workerContinueSync.on(m => {
 			if(this.promiseResolvesByMessageId.has(m.originalId)) {
 				this.promiseResolvesByMessageId.get(m.originalId)!.call(this);
+				this.promiseResolvesByMessageId.delete(m.originalId);
 			}
 		});
 
