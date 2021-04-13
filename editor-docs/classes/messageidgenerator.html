@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EditorApi | Cube Codes IDE - Editor</title>
+	<title>MessageIdGenerator | Cube Codes IDE - Editor</title>
 	<meta name="description" content="Documentation for Cube Codes IDE - Editor">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">Cube Codes IDE - Editor</a>
 				</li>
 				<li>
-					<a href="editorapi.html">EditorApi</a>
+					<a href="messageidgenerator.html">MessageIdGenerator</a>
 				</li>
 			</ul>
-			<h1>Interface EditorApi</h1>
+			<h1>Class MessageIdGenerator</h1>
 		</div>
 	</div>
 </header>
@@ -69,12 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">EditorApi</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="executioncontextapi.html" class="tsd-signature-type" data-tsd-kind="Interface">ExecutionContextApi</a>
-							</li>
-						</ul>
+						<span class="target">MessageIdGenerator</span>
 					</li>
 				</ul>
 			</section>
@@ -83,58 +78,55 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="editorapi.html#cube" class="tsd-kind-icon">CUBE</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="editorapi.html#cubelets" class="tsd-kind-icon">CUBELETS</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="editorapi.html#system" class="tsd-kind-icon">SYSTEM</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="editorapi.html#ui" class="tsd-kind-icon">UI</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="messageidgenerator.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="messageidgenerator.html#generate" class="tsd-kind-icon">generate</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="cube" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> CUBE</h3>
-					<div class="tsd-signature tsd-kind-icon">CUBE<span class="tsd-signature-symbol">:</span> <a href="../classes/cubeapi.html" class="tsd-signature-type" data-tsd-kind="Class">CubeApi</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/EditorApi.ts#L12">worker/src/Execution/EditorApi.ts:12</a></li>
-						</ul>
-					</aside>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Message<wbr>IdGenerator<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="messageidgenerator.html" class="tsd-signature-type" data-tsd-kind="Class">MessageIdGenerator</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="messageidgenerator.html" class="tsd-signature-type" data-tsd-kind="Class">MessageIdGenerator</a></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="cubelets" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> CUBELETS</h3>
-					<div class="tsd-signature tsd-kind-icon">CUBELETS<span class="tsd-signature-symbol">:</span> <a href="../classes/cubeletinspector.html" class="tsd-signature-type" data-tsd-kind="Class">CubeletInspector</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/EditorApi.ts#L14">worker/src/Execution/EditorApi.ts:14</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="system" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> SYSTEM</h3>
-					<div class="tsd-signature tsd-kind-icon">SYSTEM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SystemApi</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/EditorApi.ts#L8">worker/src/Execution/EditorApi.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ui" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> UI</h3>
-					<div class="tsd-signature tsd-kind-icon">UI<span class="tsd-signature-symbol">:</span> <a href="../classes/uiapi.html" class="tsd-signature-type" data-tsd-kind="Class">UiApi</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/EditorApi.ts#L10">worker/src/Execution/EditorApi.ts:10</a></li>
-						</ul>
-					</aside>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="generate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">generate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/common/src/Messages/MessageIdGenerator.ts#L3">common/src/Messages/MessageIdGenerator.ts:3</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -150,20 +142,14 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="editorapi.html" class="tsd-kind-icon">Editor<wbr>Api</a>
+					<li class="current tsd-kind-class">
+						<a href="messageidgenerator.html" class="tsd-kind-icon">Message<wbr>IdGenerator</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="editorapi.html#cube" class="tsd-kind-icon">CUBE</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="messageidgenerator.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="editorapi.html#cubelets" class="tsd-kind-icon">CUBELETS</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="editorapi.html#system" class="tsd-kind-icon">SYSTEM</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="editorapi.html#ui" class="tsd-kind-icon">UI</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="messageidgenerator.html#generate" class="tsd-kind-icon">generate</a>
 							</li>
 						</ul>
 					</li>

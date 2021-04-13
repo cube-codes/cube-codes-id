@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>WorkerContinueSync | Cube Codes IDE - Editor</title>
+	<title>WorkerCallbackSync | Cube Codes IDE - Editor</title>
 	<meta name="description" content="Documentation for Cube Codes IDE - Editor">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">Cube Codes IDE - Editor</a>
 				</li>
 				<li>
-					<a href="workercontinuesync.html">WorkerContinueSync</a>
+					<a href="workercallbacksync.html">WorkerCallbackSync</a>
 				</li>
 			</ul>
-			<h1>Interface WorkerContinueSync</h1>
+			<h1>Interface WorkerCallbackSync</h1>
 		</div>
 	</div>
 </header>
@@ -69,10 +69,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="messagedata.html" class="tsd-signature-type" data-tsd-kind="Interface">MessageData</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><a href="../modules.html#workercontinuesynctype" class="tsd-signature-type" data-tsd-kind="Variable">WorkerContinueSyncType</a><span class="tsd-signature-symbol">&gt;</span>
+						<a href="messagedata.html" class="tsd-signature-type" data-tsd-kind="Interface">MessageData</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><a href="../modules.html#workercallbacksynctype" class="tsd-signature-type" data-tsd-kind="Variable">WorkerCallbackSyncType</a><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">WorkerContinueSync</span>
+								<span class="target">WorkerCallbackSync</span>
 							</li>
 						</ul>
 					</li>
@@ -82,25 +82,48 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="workercontinuesync.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="workercallbacksync.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="workercallbacksync.html#originalid" class="tsd-kind-icon">original<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="workercallbacksync.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="id" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="messagedata.html">MessageData</a>.<a href="messagedata.html#id">id</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/common/src/Messages/MessageData.ts#L8">common/src/Messages/MessageData.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="originalid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> original<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">original<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/common/src/Message Bus/WorkerCallbackSync.ts#L5">common/src/Message Bus/WorkerCallbackSync.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="type" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;WorkerContinueSync&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;WorkerCallbackSync&quot;</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="messagedata.html">MessageData</a>.<a href="messagedata.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/common/src/Messages/MessageData.ts#L6">common/src/Messages/MessageData.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/common/src/Messages/MessageData.ts#L6">common/src/Messages/MessageData.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -119,10 +142,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="workercontinuesync.html" class="tsd-kind-icon">Worker<wbr>Continue<wbr>Sync</a>
+						<a href="workercallbacksync.html" class="tsd-kind-icon">Worker<wbr>Callback<wbr>Sync</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="workercontinuesync.html#type" class="tsd-kind-icon">type</a>
+								<a href="workercallbacksync.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="workercallbacksync.html#originalid" class="tsd-kind-icon">original<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="workercallbacksync.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
@@ -152,6 +181,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>

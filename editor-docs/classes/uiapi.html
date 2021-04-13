@@ -96,7 +96,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="uiapi.html#overlayinfo" class="tsd-kind-icon">overlay<wbr>Info</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="uiapi.html#overlaysuccess" class="tsd-kind-icon">overlay<wbr>Success</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="uiapi.html#overlaywarning" class="tsd-kind-icon">overlay<wbr>Warning</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="uiapi.html#sleep" class="tsd-kind-icon">sleep</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,7 +113,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L4">worker/src/Execution/UiApi.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L6">worker/src/Execution/UiApi.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -134,13 +133,13 @@
 					<a name="log" class="tsd-anchor"></a>
 					<h3>log</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, level<span class="tsd-signature-symbol">?: </span><a href="../enums/level.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Level</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, level<span class="tsd-signature-symbol">?: </span><a href="../enums/level.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Level</a>, withDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L8">worker/src/Execution/UiApi.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L10">worker/src/Execution/UiApi.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -151,8 +150,11 @@
 								<li>
 									<h5>level: <a href="../enums/level.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Level</a><span class="tsd-signature-symbol"> = ...</span></h5>
 								</li>
+								<li>
+									<h5>withDate: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -160,13 +162,13 @@
 					<a name="logerror" class="tsd-anchor"></a>
 					<h3>log<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Error<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Error<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, withDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L31">worker/src/Execution/UiApi.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L35">worker/src/Execution/UiApi.ts:35</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -174,8 +176,11 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5>withDate: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -183,13 +188,13 @@
 					<a name="loginfo" class="tsd-anchor"></a>
 					<h3>log<wbr>Info</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Info<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Info<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, withDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L19">worker/src/Execution/UiApi.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L23">worker/src/Execution/UiApi.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -197,8 +202,11 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5>withDate: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -206,13 +214,13 @@
 					<a name="logsuccess" class="tsd-anchor"></a>
 					<h3>log<wbr>Success</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Success<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Success<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, withDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L23">worker/src/Execution/UiApi.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L27">worker/src/Execution/UiApi.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -220,8 +228,11 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5>withDate: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -229,13 +240,13 @@
 					<a name="logwarning" class="tsd-anchor"></a>
 					<h3>log<wbr>Warning</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Warning<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Warning<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, withDate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L27">worker/src/Execution/UiApi.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L31">worker/src/Execution/UiApi.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -243,8 +254,11 @@
 								<li>
 									<h5>message: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5>withDate: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -252,13 +266,13 @@
 					<a name="overlay" class="tsd-anchor"></a>
 					<h3>overlay</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">overlay<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, level<span class="tsd-signature-symbol">?: </span><a href="../enums/level.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Level</a>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">overlay<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, level<span class="tsd-signature-symbol">?: </span><a href="../enums/level.html" class="tsd-signature-type" data-tsd-kind="Enumeration">Level</a>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L35">worker/src/Execution/UiApi.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L39">worker/src/Execution/UiApi.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -276,7 +290,7 @@
 									<h5>duration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3000</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -284,13 +298,13 @@
 					<a name="overlayerror" class="tsd-anchor"></a>
 					<h3>overlay<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Error<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Error<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L60">worker/src/Execution/UiApi.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L65">worker/src/Execution/UiApi.ts:65</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -305,7 +319,7 @@
 									<h5>duration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3000</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -313,13 +327,13 @@
 					<a name="overlayinfo" class="tsd-anchor"></a>
 					<h3>overlay<wbr>Info</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Info<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Info<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L48">worker/src/Execution/UiApi.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L53">worker/src/Execution/UiApi.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -334,7 +348,7 @@
 									<h5>duration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3000</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -342,13 +356,13 @@
 					<a name="overlaysuccess" class="tsd-anchor"></a>
 					<h3>overlay<wbr>Success</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Success<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Success<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L52">worker/src/Execution/UiApi.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L57">worker/src/Execution/UiApi.ts:57</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -363,7 +377,7 @@
 									<h5>duration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3000</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -371,13 +385,13 @@
 					<a name="overlaywarning" class="tsd-anchor"></a>
 					<h3>overlay<wbr>Warning</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Warning<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">overlay<wbr>Warning<span class="tsd-signature-symbol">(</span>title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L56">worker/src/Execution/UiApi.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/3866651/worker/src/Execution/UiApi.ts#L61">worker/src/Execution/UiApi.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -390,29 +404,6 @@
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3000</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="sleep" class="tsd-anchor"></a>
-					<h3>sleep</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">sleep<span class="tsd-signature-symbol">(</span>seconds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/cube-codes/cube-codes-ide/blob/55b250c/worker/src/Execution/UiApi.ts#L64">worker/src/Execution/UiApi.ts:64</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>seconds: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -469,9 +460,6 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="uiapi.html#overlaywarning" class="tsd-kind-icon">overlay<wbr>Warning</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="uiapi.html#sleep" class="tsd-kind-icon">sleep</a>
-							</li>
 						</ul>
 					</li>
 				</ul>
@@ -500,6 +488,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
