@@ -76,15 +76,12 @@ export class CubeWidget {
 		<img src="images/own-icons/cube-${caption}.svg" />
 		<span>${caption}</span>
 	</button>
-	<button type="button" class="btn btn-secondary cube-move-angles dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" title="More angles" />
-	<div class="dropdown-menu">
-		<span class="dropdown-item" title="${title} 180° CW">Double</span>
-		<span class="dropdown-item" title="${title} 90° CCW">Invert</span>
-	</div>
+	<button type="button" class="btn btn-secondary cube-move-inverse" title="${title} 90° CCW">
+		<span>${caption}'</span>
+	</button>
 </div>`).appendTo(parent);
-			control.children('button:first-child').on('click', e => moveAction(1));
-			control.find('.dropdown-item:nth-child(1)').on('click', e => moveAction(2));
-			control.find('.dropdown-item:nth-child(2)').on('click', e => moveAction(-1));
+			control.children('button:nth-child(1)').on('click', e => moveAction(1));
+			control.children('button:nth-child(2)').on('click', e => moveAction(-1));
 		};
 		const capitalize = (value: string) => value.substr(0,1).toUpperCase() + value.substr(1).toLowerCase();
 		const centerNames = ['MIDDLE', 'EQUATOR', 'STAND'];
@@ -144,10 +141,10 @@ export class CubeWidget {
 
 		const updateButtons = () => {
 			const uiActive = this.ui.getState() !== UiState.IDLE;
-			$('#cube-shuffle'    ).prop('disabled', uiActive);
-			$('#cube-reset'      ).prop('disabled', uiActive);
-			$('.cube-move'       ).prop('disabled', uiActive);
-			$('.cube-move-angles').prop('disabled', uiActive);
+			$('#cube-shuffle'     ).prop('disabled', uiActive);
+			$('#cube-reset'       ).prop('disabled', uiActive);
+			$('.cube-move'        ).prop('disabled', uiActive);
+			$('.cube-move-inverse').prop('disabled', uiActive);
 		};
 
 		this.ui.stateChanged.on(updateButtons);

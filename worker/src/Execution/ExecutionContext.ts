@@ -7,6 +7,7 @@ import { EditorApiBuilder } from "./EditorApiBuilder";
 import { CubeStateSyncType } from "../../../common/src/Message Bus/CubeStateSync";
 import { MessageIdGenerator } from "../../../common/src/Messages/MessageIdGenerator";
 import { EditorApi } from "./EditorApi";
+import { SystemApi } from "./SystemApi";
 
 export interface ExecutionContextApi extends EditorApi {
 	program(): Promise<void>
@@ -35,6 +36,7 @@ export class ExecutionContext {
 	async run(programCode: string): Promise<void> {
 
 		EditorApiBuilder.set({
+			SYSTEM: new SystemApi(),
 			UI: new UiApi(this.messageBus),
 			CUBE: new CubeApi(this.cube),
 			CUBELETS: new CubeApi(this.cube).cubelets
@@ -44,7 +46,7 @@ export class ExecutionContext {
 
 			const global = self as unknown as (WorkerGlobalScope & ExecutionContextApi)
 			
-			new Function(`self.program = async () => {${programCode}}`)();
+			new Function(`self.program = async () => {\n${programCode}\n}`)();
 
 			await global.UI.logInfo('Program running ...', true);
 			await global.UI.overlayInfo('Running', '', 5000);

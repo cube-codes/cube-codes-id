@@ -66,8 +66,4 @@ export class UiApi {
 		await this.overlay(title, message, Level.ERROR, duration);
 	}
 
-	async sleep(seconds: number): Promise<void> {
-		return new Promise(r => setTimeout(r, seconds * 1000));
-	}
-
 }

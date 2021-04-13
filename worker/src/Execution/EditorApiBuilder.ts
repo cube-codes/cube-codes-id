@@ -12,9 +12,7 @@ export class EditorApiBuilder {
 	}
 
 	static set(editorApi: EditorApi) {
-		EditorApiBuilder.addReadonlyProperty('UI', editorApi.UI);
-		EditorApiBuilder.addReadonlyProperty('CUBE', editorApi.CUBE);
-		EditorApiBuilder.addReadonlyProperty('CUBELETS', editorApi.CUBELETS);
+		Object.entries(editorApi).forEach(([key, value]) => EditorApiBuilder.addReadonlyProperty(key, value));
 	}
 
 }

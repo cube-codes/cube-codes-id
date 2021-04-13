@@ -76,7 +76,7 @@ export class ProgramManager {
 			if (m.crash) {
 				console.debug('Unexpected error in program worker', m.crash);
 			} else if (m.failure) {
-				this.ui.editorWidget.log(`Program failed with an error: ${m.failure.message}\nStack:\n${m.failure.stack}`, Level.ERROR, true);
+				this.ui.editorWidget.log(`Program failed with an error: ${m.failure.message}\nStack: ${m.failure.stack}`, Level.ERROR, true);
 				this.ui.editorWidget.logSeparator();
 				this.ui.overlay('Program failed with an error', m.failure.message, Level.ERROR, 8000);
 			} else {
