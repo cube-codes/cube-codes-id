@@ -5,7 +5,7 @@ export class SystemApi {
 	}
 
 	async loadLibrary(url: string): Promise<void> {
-		eval(await fetch(url).then(r => r.text()));
+		new Function(await fetch(url).then(r => r.text()))();
 	}
 
 }

@@ -17,6 +17,7 @@ export * from '../../common/src/Cube Api/CubeletInspector';
 export * from './Execution/EditorApi';
 export * from './Execution/EditorApiBuilder';
 export * from './Execution/ExecutionContext';
+export * from './Execution/SystemApi';
 export * from './Execution/UiApi';
 
 export * from './Worker/ProgramWorker';
