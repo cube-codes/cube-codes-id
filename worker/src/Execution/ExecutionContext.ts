@@ -49,7 +49,7 @@ export class ExecutionContext {
 			new Function(`self.program = async () => {\n${programCode}\n}`)();
 
 			await global.UI.logInfo('Program running ...', true);
-			await global.UI.overlayInfo('Running', '', 5000);
+			await global.UI.overlayInfo('Running ...', '', 5000);
 			
 			await global.program();
 			

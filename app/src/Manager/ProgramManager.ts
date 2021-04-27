@@ -43,7 +43,7 @@ export class ProgramManager {
 
 		this.setState(ProgramManagerState.STARTING);
 		this.ui.editorWidget.log('Program starting ...', Level.INFO, true);
-		this.ui.overlay('Program starting ...', '', Level.INFO, 5000);
+		this.ui.overlay('Program: Starting ...', '', Level.INFO, 5000);
 
 		this.workerContext = new ProgramWorkerContext();
 		this.workerContext.messageBus.cubeStateSync.on(async m => {
@@ -78,11 +78,11 @@ export class ProgramManager {
 			} else if (m.failure) {
 				this.ui.editorWidget.log(`Program failed with an error: ${m.failure.message}\nStack: ${m.failure.stack}`, Level.ERROR, true);
 				this.ui.editorWidget.logSeparator();
-				this.ui.overlay('Program failed with an error', m.failure.message, Level.ERROR, 8000);
+				this.ui.overlay('Program: Failed with an error', m.failure.message, Level.ERROR, 8000);
 			} else {
 				this.ui.editorWidget.log(`Program finished successfully`, Level.SUCCESS, true);
 				this.ui.editorWidget.logSeparator();
-				this.ui.overlay('Program finished successfully', '', Level.SUCCESS, 5000);
+				this.ui.overlay('Program: Finished successfully', '', Level.SUCCESS, 5000);
 			}
 		});
 
@@ -108,7 +108,7 @@ export class ProgramManager {
 		this.setState(ProgramManagerState.IDLE);
 		this.ui.editorWidget.log(`Program aborted`, Level.WARNING, true);
 		this.ui.editorWidget.logSeparator();
-		this.ui.overlay('Program aborted', '', Level.WARNING, 8000);
+		this.ui.overlay('Program: Aborted', '', Level.WARNING, 8000);
 
 	}
 
