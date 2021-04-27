@@ -6,7 +6,7 @@
 		"build": "tsc",
 		"test": "jest",
 		"build-browser": "rollup -c",
-		"build-docs": "typedoc",
+		"build-docs": "typedoc && cpx 'node_modules/@cube-codes/cube-codes-model/dist/package/grammar.docs.*.html' 'dist/docs/'",
 		"ci-build": "npm ci && npm run build && npm run test && npm run build-browser && npm run build-docs",
 		"ci-release": "npm run ci-build"
 	},
@@ -14,6 +14,7 @@
 		"@rollup/plugin-commonjs": "^16.0.0",
 		"@rollup/plugin-node-resolve": "^11.2.0",
 		"@types/jest": "^26.0.21",
+		"cpx": "^1.5.0",
 		"jest": "^26.6.3",
 		"rollup": "^2.42.1",
 		"ts-jest": "^26.5.4",
@@ -21,8 +22,8 @@
 		"typescript": "^4.2.3"
 	},
 	"dependencies": {
-		"@cube-codes/cube-codes-model": "0.0.38",
-		"@cube-codes/cube-codes-visualizer": "0.0.16",
+		"@cube-codes/cube-codes-model": "0.0.40",
+		"@cube-codes/cube-codes-visualizer": "0.0.18",
 		"@types/ace": "0.0.45",
 		"@types/bootstrap": "^5.0.9",
 		"@types/jquery": "^3.5.5",
