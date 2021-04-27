@@ -21,8 +21,8 @@
 		"typescript": "^4.2.3"
 	},
 	"dependencies": {
-		"@cube-codes/cube-codes-model": "0.0.36",
-		"@cube-codes/cube-codes-visualizer": "0.0.14",
+		"@cube-codes/cube-codes-model": "0.0.38",
+		"@cube-codes/cube-codes-visualizer": "0.0.16",
 		"@types/ace": "0.0.45",
 		"@types/bootstrap": "^5.0.9",
 		"@types/jquery": "^3.5.5",

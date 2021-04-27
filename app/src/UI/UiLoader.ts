@@ -30,7 +30,7 @@ export class UiLoader {
 			return this.constructDefaultAppState(parameters);
 		} else if (parameters.get('init') === 'loadFromStorage') {
 			const appStateValue = localStorage.getItem('header-load-file');
-			if (appStateValue == null) {
+			if (appStateValue === null) {
 				afterSetupActions.push(ui => ui.overlay('No scenario found', 'You tried to load a scenario from the local storage, but there was nothing saved into it!', Level.ERROR, 10000));
 				return this.constructDefaultAppState(parameters);
 			} else {
@@ -40,7 +40,7 @@ export class UiLoader {
 			}
 		} else if (parameters.get('init') === 'loadFromUrl') {
 			const url = parameters.get('url');
-			if (url == null) {
+			if (url === null) {
 				afterSetupActions.push(ui => ui.overlay('No url found', 'You tried to load a scenario from an url, but you did not supply an url!', Level.ERROR, 10000));
 				return this.constructDefaultAppState(parameters);
 			} else {

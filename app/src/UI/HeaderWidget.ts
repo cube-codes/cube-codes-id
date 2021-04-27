@@ -7,10 +7,14 @@ import { UiState } from "./UiState";
 export class HeaderWidget {
 
 	private static readonly MODES: ReadonlyMap<string, string> = new Map([
-		['2-1', 'Colored 2x2x2 (Pocket Cube)'],
-		['3-1', 'Colored 3x3x3 (Rubik\'s Cube)'],
-		['4-1', 'Colored 4x4x4 (Master Cube)'],
-		['5-1', 'Colored 5x5x5 (Professor\'s Cube)']
+		['2-1', 'Colored 2x2x2 (Pocket / Mini Cube)'],
+		['3-1', 'Colored 3x3x3 (Rubik\'s / Magic Cube)'],
+		['4-1', 'Colored 4x4x4 (Rubik\'s Revenge / Master Cube)'],
+		['5-1', 'Colored 5x5x5 (Professor\'s Cube)'],
+		['2-0', 'Numbered 2x2x2 (Super Cube 2)'],
+		['3-0', 'Numbered 3x3x3 (Super Cube 3)'],
+		['4-0', 'Numbered 4x4x4 (Super Cube 4)'],
+		['5-0', 'Numbered 5x5x5 (Super Cube 5)']
 	]);
 
 	constructor(private readonly ui: Ui) {
