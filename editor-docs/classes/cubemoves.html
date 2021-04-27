@@ -86,9 +86,9 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="cubemoves.html#commutator" class="tsd-kind-icon">commutator</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="cubemoves.html#conjugate" class="tsd-kind-icon">conjugate</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="cubemoves.html#invert" class="tsd-kind-icon">invert</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="cubemoves.html#opcommutator" class="tsd-kind-icon">opcommutator</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="cubemoves.html#opconjugate" class="tsd-kind-icon">opconjugate</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="cubemoves.html#repeat" class="tsd-kind-icon">repeat</a></li>
 							</ul>
 						</section>
@@ -115,16 +115,16 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-					<a name="commutator" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> commutator</h3>
+					<a name="invert" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> invert</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">commutator<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a>, moves1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span>, moves2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">invert<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a>, moves<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Cube Move/CubeMoves.d.ts:6</li>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Cube Move/CubeMoves.d.ts:5</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -133,10 +133,7 @@
 									<h5>spec: <a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a></h5>
 								</li>
 								<li>
-									<h5>moves1: <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li>
-									<h5>moves2: <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>moves: <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -144,10 +141,10 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-					<a name="conjugate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> conjugate</h3>
+					<a name="opcommutator" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> opcommutator</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">conjugate<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a>, moves1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span>, moves2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">opcommutator<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a>, moves1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span>, moves2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -173,16 +170,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-					<a name="invert" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> invert</h3>
+					<a name="opconjugate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> opconjugate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">invert<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a>, moves<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">opconjugate<span class="tsd-signature-symbol">(</span>spec<span class="tsd-signature-symbol">: </span><a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a>, moves1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span>, moves2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Cube Move/CubeMoves.d.ts:5</li>
+									<li>Defined in worker/node_modules/@cube-codes/cube-codes-model/dist/package/Cube Move/CubeMoves.d.ts:6</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -191,7 +188,10 @@
 									<h5>spec: <a href="cubespecification.html" class="tsd-signature-type" data-tsd-kind="Class">CubeSpecification</a></h5>
 								</li>
 								<li>
-									<h5>moves: <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>moves1: <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>moves2: <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">readonly </span><a href="cubemove.html" class="tsd-signature-type" data-tsd-kind="Class">CubeMove</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -248,13 +248,13 @@
 								<a href="cubemoves.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-								<a href="cubemoves.html#commutator" class="tsd-kind-icon">commutator</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
-								<a href="cubemoves.html#conjugate" class="tsd-kind-icon">conjugate</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
 								<a href="cubemoves.html#invert" class="tsd-kind-icon">invert</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="cubemoves.html#opcommutator" class="tsd-kind-icon">opcommutator</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="cubemoves.html#opconjugate" class="tsd-kind-icon">opconjugate</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static tsd-is-external">
 								<a href="cubemoves.html#repeat" class="tsd-kind-icon">repeat</a>
